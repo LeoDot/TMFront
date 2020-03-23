@@ -1,0 +1,250 @@
+
+
+
+
+
+
+.closed{
+
+  float:right;
+
+}
+
+
+
+.vertical{
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+.nopadding {
+   margin: 0 !important;
+}
+
+#v-pills-tab, #v-pills-tabContent,#tabContent {
+   padding: 0 !important;
+
+}
+
+.vertical{
+  padding-left: 0.1em;
+ padding-right: 0.1em;
+}
+
+#tabContent {
+  display: none;
+}
+
+
+#tabcontainer{
+
+position:absolute;
+
+left:0;
+/*left:var(--toolbox-min-width);*/
+/*bottom: 0;*/
+
+}
+
+
+/*review*/
+
+.tabvertical {
+/*top:76px;*/
+right: 0;
+z-index: 15;
+/*Vertical initial height*/
+padding-top:78px;
+/*necessary to be able to click*/
+pointer-events:none !important;
+
+}
+
+.tabhorizontal{
+
+bottom:0;
+/*left:var(--toolbox-min-width);*/
+/*left:var(--output-width);*/
+z-index: 15;
+/*padding-left: var(--toolbox-min-width);*/
+width: 100%;
+}
+
+/*finish review*/
+
+.blocklyMainWorkspaceScrollbar {
+
+z-index:12;
+
+}
+
+.row {
+
+	margin:0;
+}
+
+
+.container {
+
+padding-left: 0;
+
+}
+
+
+#col1 {
+
+height: 10px;
+
+}
+
+
+#output,#console {
+
+height: 100%;
+width: 100%;
+margin:0;
+/*position: fixed;*/
+padding: 0
+}
+
+
+#tabContent {
+
+	    max-width: 70vh;
+        background-color: azure;
+}
+
+
+.blocklyTreeRoot {
+
+    z-index:20;
+}
+
+.nav {
+
+	    background-color: azure;
+}
+
+#giftab, #console {
+
+	padding:0px;
+	width: 100%;
+	height: 100%;
+}
+
+.carousel {
+  position: static !important;
+}
+
+#giftab {
+
+	background-color: azure;
+	margin:0;
+	padding-left: 3px;
+}
+
+.contentvertical {
+
+	/*height:100vh;*/
+	height: 100%;
+	/*width:40vh;*/
+	background-color: azure;
+}
+
+.contenthorizontal {
+
+	/*height:50vh;*/
+	/*width: 100vw;*/
+	width: 100%;
+	background-color: azure;
+}
+
+.col1vertical {
+
+height:76px;
+
+
+}
+
+.col1horizontal {
+
+width:var(--toolbox-min-width);
+
+}
+
+
+
+.overlay {
+  position:absolute;
+  top:0;
+  right:0;
+/*  height:25px;
+  width:25px;*/
+}
+
+
+#v-pills-home {
+
+	position:relative;
+}
+
+.nav-pills .nav-link.active {
+    /*color: #FFFFFF;*/
+	background-color: #4DD1FE !important
+}
+
+.carousel-control-next-icon > span > img{        
+    position: absolute;
+    /*set position of image from top to be 50%...*/
+    top: 50%;
+    /*and then shift it down to make it perfectly center.*/
+    transform: translate(-50%, -50%);
+
+    z-index: 5;
+    display: inline-block;
+}
+
+.carousel-control-prev-icon {
+
+background-color: black !important
+
+}
+
+.fixarrow{
+
+top:50px !important;
+position:absolute !important;
+
+}
+.carousel-control-next-icon {
+
+background-color: black !important
+
+}
+
+#noChrome,  {
+    position: fixed;
+	z-index: 1041;
+}
+
+
+#someDiv {
+    position: fixed;
+    z-index: 1041;
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}
+
+
+/*necessary to click through tabs*/
+/*#tabcontainer {
+
+  pointer-events:none !important;
+}*/
+
+.content, .col-px10, #tabContent {
+  pointer-events: auto;
+}

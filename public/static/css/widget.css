@@ -1,0 +1,55 @@
+
+.shop-banner-mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /*display: block;*/
+    display: none;
+}
+
+.shop-banner-mask.show {
+    display: block;
+}
+
+.shop-banner {
+    width: 70%;
+    margin:0.7rem auto;
+    /*border: 1px solid #f00;*/
+    /*position: relative;*/
+    position: absolute;
+    align-items: center;
+    z-index: 10001;
+    top: 0;
+    display: flex;
+    left:63%;
+    transform: translate(-50%, 0);
+}
+
+.shop-banner img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+}
+
+.shop-banner .shop-banner-bk {
+    width: 100%;
+}
+
+.shop-banner .shop-banner-close {
+    position: absolute;
+    width: 10%;
+    height: 8%;
+    left: 1%;
+    top: 36%;
+    font-size: 26px;
+    color: #d6e9f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

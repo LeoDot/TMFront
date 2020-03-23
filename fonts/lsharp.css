@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "lsharp";
+  src: url('lsharp.eot?t=1584277203255'); /* IE9*/
+  src: url('lsharp.eot?t=1584277203255#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("lsharp.woff2?t=1584277203255") format("woff2"),
+  url("lsharp.woff?t=1584277203255") format("woff"),
+  url('lsharp.ttf?t=1584277203255') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('lsharp.svg?t=1584277203255#lsharp') format('svg'); /* iOS 4.1- */
+}
+
+[class^="lsharp-"], [class*=" lsharp-"] {
+  font-family: 'lsharp' !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.lsharp-add-box:before { content: "\ea01"; }
+.lsharp-add-box1:before { content: "\ea02"; }
+.lsharp-add-round:before { content: "\ea03"; }
+.lsharp-add:before { content: "\ea04"; }
+.lsharp-delete-box:before { content: "\ea05"; }
+.lsharp-delete-round:before { content: "\ea06"; }
+.lsharp-delete:before { content: "\ea07"; }
+.lsharp-larrow:before { content: "\ea08"; }
+.lsharp-larrow1:before { content: "\ea09"; }
+.lsharp-light-add:before { content: "\ea0a"; }
+.lsharp-light-delete:before { content: "\ea0b"; }
+.lsharp-light-ok:before { content: "\ea0c"; }
+.lsharp-menu-icon:before { content: "\ea0d"; }
+.lsharp-menu-icon1:before { content: "\ea0e"; }
+.lsharp-ok:before { content: "\ea0f"; }
+.lsharp-play:before { content: "\ea10"; }
+.lsharp-right:before { content: "\ea11"; }
+.lsharp-right1:before { content: "\ea12"; }
+.lsharp-right2:before { content: "\ea13"; }
+.lsharp-s3:before { content: "\ea14"; }
+.lsharp-s31:before { content: "\ea15"; }
+.lsharp-s5:before { content: "\ea16"; }
+.lsharp-s6:before { content: "\ea17"; }
+.lsharp-s8:before { content: "\ea18"; }
