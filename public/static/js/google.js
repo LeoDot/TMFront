@@ -55,13 +55,13 @@ function loadSignInButton(isSignedIn) {
     user.id = 'sign-out';
     user.onclick = driveSignOut;
     user.title = 'sign out';
-    user.innerHTML = '<img src="./media/signout.png">';
+    user.innerHTML = '<img src="static/media/signout.png">';
   } else {
     // Display "Sign In" button
     user.id = 'sign-in';
     user.onclick = driveSignIn;
     user.title = 'sign in';
-    user.innerHTML = '<img src="./media/signin.png">';
+    user.innerHTML = '<img src="static/media/signin.png">';
   }
   user.class = 'item btn';
   buttonDiv.appendChild(user);

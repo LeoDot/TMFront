@@ -806,6 +806,15 @@ function postChange(event) {
       preIsolateEvent = null;
     }
 
+
+
+
+  } else {
+    preIsolateEvent = null;
+  }
+  
+
+  if ((event.type == Blockly.Events.MOVE) || (event.type == Blockly.Events.DELETE) ) {
     //show JS code
     var code; 
     if ( "tokymaker" == currentTarget ){
@@ -815,12 +824,7 @@ function postChange(event) {
     }
 
     window.setJs(code);
-
-
-  } else {
-    preIsolateEvent = null;
   }
-  
 
 
 
@@ -1287,10 +1291,6 @@ let pairBleOriginalColor = document.getElementById("pairBluetooth").style.color;
 
 if (window.location.protocol === 'https:') {
   shopBannerMask.classList.add("show");
-}
-
-if (isEnglish) {
-  document.getElementById("targetContain").style.display = "inline-flex";
 }
 
 //Tabs functionality

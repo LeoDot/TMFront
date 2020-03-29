@@ -1,5 +1,5 @@
 <template>
-  <div :class="css.wrap">
+  <div :class="css.wrap" v-if="isEnable">
     <div
       :class="current === 'tokymaker' ? css.active : ''"
       @click="select('tokymaker')"
@@ -17,9 +17,11 @@ export default {
   name: "SwitchBtn",
   data() {
     return {
+      isEnable: window.isEnglish,
       current: "tokymaker"
     };
   },
+
   methods: {
     select(target) {
       this.current = target;
