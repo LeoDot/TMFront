@@ -1,3 +1,4 @@
+// https://github.com/AR-js-org/AR.js , https://d3js.org/
 const wrapFront = `
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@ const wrapFront = `
   <a-scene id="ar" embedded arjs='debugUIEnabled: false;' antialias="true">
     <a-assets>
     </a-assets>
-    <a-marker-camera type='pattern' url='/media/toky-marker.patt'></a-marker-camera>
+    <a-marker-camera type='pattern' url='static/media/toky-marker.patt'></a-marker-camera>
   </a-scene>
   <div style="position: fixed; left: 0%; bottom: 10px; width:100%; text-align: center; z-index: 1;color: grey;">
     <div style="color: rgba(0, 0, 0, 0.9); background-color: rgba(127, 127, 127, 0.5); display: inline-block; padding: 0.5em; margin: 0.5em; text-align: left;">
@@ -77,7 +78,7 @@ async function uploadAR(){
   if (arFileID) {
     let qrcode = `${window.location.origin}/ar/v1/experience/${arFileID}`;
     let url = await QRCode.toDataURL(qrcode)
-    ARCode = await combineImages(url, "media/toky-marker.jpg");
+    ARCode = await combineImages(url, "static/media/toky-marker.jpg");
     imgFile = dataURItoBlob(ARCode);
     await createFile(`${fileName}_qrcode`, imgFile, folderId, 'png');
     viewQR();

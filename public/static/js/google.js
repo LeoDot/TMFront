@@ -55,13 +55,15 @@ function loadSignInButton(isSignedIn) {
     user.id = 'sign-out';
     user.onclick = driveSignOut;
     user.title = 'sign out';
-    user.innerHTML = '<img src="static/media/signout.png">';
+    user.innerHTML = '<img src="static/media/GoogleLogo.png">\
+       <i class="fa fa-sign-out" aria-hidden="true"></i>';
   } else {
     // Display "Sign In" button
     user.id = 'sign-in';
     user.onclick = driveSignIn;
     user.title = 'sign in';
-    user.innerHTML = '<img src="static/media/signin.png">';
+    user.innerHTML = '<i class="fa fa-sign-in" aria-hidden="true"></i>\
+       <img src="static/media/GoogleLogo.png">';
   }
   user.class = 'item btn';
   buttonDiv.appendChild(user);
@@ -75,6 +77,7 @@ function loadGoogleClassButton(isReady) {
   if (isReady) {
     // Display button
     let googleClassButton = document.createElement('div');
+    gclassDiv.title="Save to Share to google classroom"
     googleClassButton.id = 'googleclass-button';
     gclassDiv.appendChild(googleClassButton);
     gapi.sharetoclassroom.render(
@@ -91,7 +94,8 @@ function loadGoogleClassButton(isReady) {
       });
   } else {
     // Display notice instructing user to save first
-    gclassDiv.innerHTML = 'Save to share to<br>Google Classroom'; 
+    gclassDiv.title="Login in Google at first and than Share to google classroom"
+    gclassDiv.innerHTML = '<img src="static/media/GoogleClassroom.svg" style="opacity: 90%">'; 
   }
 }
 

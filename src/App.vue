@@ -1,61 +1,61 @@
 <template>
   <div id="app">
     <div :class="css.header">
-      <a :class="css.logo" href="https://create.tokylabs.com">
+      <a :class="css.logo" @click="handleClickLogo">
         <img src="static/media/toky.png" />
       </a>
-
-      <!--      <div class="target" id="targetContain">-->
-      <!--                Target:&nbsp-->
-      <!--        <select id="targetSelect" class="option" onChange="targetSelect()">-->
-      <!--          <option selected="selected" value="tokymaker">TokyMaker</option>-->
-      <!--          <option value="ar">AR</option>-->
-      <!--        </select>-->
-      <!--      </div>-->
-      <!--      <div class="googlelogo" id="driveIcon" title="Google Drive">-->
-      <!--        <img src="static/media/googledriveicon.png" alt="Google Drive" />-->
-      <!--      </div>-->
-
-      <!-- <div class="hd_divider">&nbsp</div> -->
-
       <SwitchBtn />
-
       <div :class="css.menu">
-        <a href="http://tokylabs.com/community" target="_blank">Community</a>
+        <a href="http://community.tokylabs.com/" target="_blank">Community</a>
         <a href="http://tokylabs.com/learn" target="_blank">Learn</a>
-        <a @click="showHelpView">Help</a>
-        <!-- <a onclick="showTab(event)" class="nav-link vertical" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Help</a>-->
+        <a
+          href="http://tokylabs.com/presentations/First_Steps_EN/index.html"
+          target="_blank"
+          >Help</a
+        >
         <a href="http://tokylabs.com/shop" style="color:#F00" target="_blank"
           >Shop</a
         >
-        <!-- Reactive Google sign in button -->
       </div>
+      <div :class="css.menum" @click="handleClickMenum">
+        <i v-show="!showMenu" class="lsharp-menu-icon"></i>
+        <i v-show="showMenu" class="lsharp-delete-round"></i>
+      </div>
+
       <ConsoleView ref="consoleView" @onShow="onConosleViewShow" />
       <JavascriptView ref="javascriptView" @onShow="onJavascriptShow" />
-      <HelpView ref="helpView" />
     </div>
+    <MobileMenu ref="mobileMenu" />
   </div>
 </template>
 
 <script>
-import HelpView from "./components/HelpView";
 import SwitchBtn from "./components/SwitchBtn";
 import ConsoleView from "./components/ConsoleView";
 import JavascriptView from "./components/JavascriptView";
+import MobileMenu from "./components/MobileMenu";
 
 export default {
   name: "App",
-  components: { JavascriptView, ConsoleView, SwitchBtn, HelpView },
+  components: { MobileMenu, JavascriptView, ConsoleView, SwitchBtn },
   data() {
-    return {};
+    return {
+      showMenu: false
+    };
   },
   methods: {
-    showHelpView() {
-      if (this.$refs.helpView.isShow) {
-        this.$refs.helpView.hide();
+    handleClickMenum() {
+      if (this.showMenu) {
+        this.showMenu = false
+        this.$refs.mobileMenu.hide();
       } else {
-        this.$refs.helpView.show();
+        this.showMenu = true
+        this.$refs.mobileMenu.show();
       }
+    },
+    handleClickLogo() {
+      // window.localStorage.removeItem("url");
+      window.location.href = window.location.origin + "?clear=true";
     },
     onConosleViewShow() {
       this.$refs.javascriptView.hide();
@@ -119,14 +119,35 @@ li {
       }
     }
   }
+  .menum {
+    display: none;
+  }
 }
 
 @media all and (max-width: 750px) {
   .header {
     .menu {
-      a {
-        font-size: 12px;
-        margin: 0 6px;
+      display: none;
+      /*a {*/
+      /*  font-size: 12px;*/
+      /*  margin: 0 6px;*/
+      /*}*/
+    }
+
+    .menum {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > i {
+        color: #fff;
+        font-size: 26px;
+      }
+
+      > i:first-child {
+        margin-top: 6px;
+      }
+      > i:last-child {
       }
     }
   }

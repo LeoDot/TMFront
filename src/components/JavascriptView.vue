@@ -99,10 +99,10 @@ export default {
     cursor: pointer;
     transition: all 0.2s ease-out;
     color: #fff;
-    background: #ff8888;
+    background: #ED2D58;
 
     &:hover {
-      background: #ff7c87;
+      background: rgb(247, 76, 113);
     }
 
     > i {

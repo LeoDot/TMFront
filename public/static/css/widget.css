@@ -10,7 +10,7 @@
 }
 
 .shop-banner-mask.show {
-    display: block;
+    display: none;
 }
 
 .shop-banner {

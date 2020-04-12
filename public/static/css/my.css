@@ -383,6 +383,12 @@ body > div {
     user-select: none;
 }
 
+.btn-signin .fa {
+    color: whitesmoke;
+    /*font-size: calc(var(--btn-bar-size)*0.7);*/
+    font-size: 22px;
+}
+
 .content {
     /*border:1px solid #f00;*/
     flex-grow:1;
@@ -439,7 +445,7 @@ body > div {
 .header2 {
     padding: 0 12px;
     flex-shrink: 0;
-    background: #4dd1fe;
+    background: #41C5EE;
     display: flex;
     align-items: center;
     height: var(--header2-height);
@@ -460,7 +466,7 @@ body > div {
 
 .menu a:hover
 {
-  background-color: #4dd1fe;
+  background-color: #41C5EE;
 }
 
 

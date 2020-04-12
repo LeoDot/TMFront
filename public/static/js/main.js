@@ -22,7 +22,7 @@ var workspace = Blockly.inject(blocklyDiv, {
   toolbox: tokymakerToolbox,
   collapse: true,
   maxBlocks: Infinity,
-  media: "/static/media/",
+  media: "static/media/",
   oneBasedIndex: true,
   scrollbars: true,
   grid: {
