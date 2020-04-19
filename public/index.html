@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <script type="text/javascript">
+      var urlHost = window.location.host;
+      var isEnglish = urlHost.indexOf(".com") > 0;
+    </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <title>Tokylabs</title>
@@ -15,7 +21,7 @@
     <!-- End Google Tag Manager -->
 
     <script type="text/javascript" >
-      if ( window.location.host.indexOf(".com") > 0){
+      if ( isEnglish){
         document.write("<script type='text/javascript' src='https://apis.google.com/js/platform.js' async defer><\/script>");
       }
     </script>
@@ -97,6 +103,7 @@
 
   </head>
   <body>
+
     <div id="app"></div>
 
     <!-- Google Tag Manager (noscript) -->
@@ -112,11 +119,10 @@
         <div class="item" onclick="saveFile()" title="save block" >
           <i class="fa fa-floppy-o" aria-hidden="true"></i>
         </div>
-        <div class="divider"></div>
 	    <script type="text/javascript" >
-	      if ( window.location.host.indexOf(".com") > 0 ) {
+	      if ( isEnglish ) {
 	        document.write('<div class="gclass" id="googleclass" title="Login in Google at first and than Share to google classroom">');
-	        document.write('<img src="static/media/GoogleClassroom.svg" style="opacity: 90%"></div>\r\n');
+	        document.write('<div class="item"><img src="static/media/GoogleClassroom.svg" style="opacity: 90%"></div></div>\r\n');
 	        document.write('<div class="divider"></div>\r\n');
 	      } 
 	    </script>
@@ -1111,7 +1117,7 @@
 
       <!-- end tabs -->
       <script type="text/javascript" >
-        if ( window.location.host.indexOf(".com") > 0 ) {
+        if ( isEnglish ) {
           document.write('<script src="static/js/qrcode.min.js"><\/script>\r\n');
           document.write('<script src="static/js/google.js"><\/script>\r\n');
           document.write('<script src="static/js/ar.js"><\/script>\r\n');
@@ -1124,7 +1130,7 @@
       <!-- Google API, to be used with the Save to Drive button -->
       <script type="text/javascript" >
 
-        if ( window.location.host.indexOf(".com") > 0 ) {
+        if ( isEnglish ) {
           document.write('<script async defer src="https://apis.google.com/js/api.js" '+
             'onload="this.onload=function(){};handleClientLoad()" '+
             'onreadystatechange="if (this.readyState === \"complete\") this.onload()"><\/script>');

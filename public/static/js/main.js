@@ -3,8 +3,7 @@ const VERSION = "5.0";
 // window.$ = window.jQuery = require('jquery');
 // try {$ = jQuery = module.exports;} catch(e) {}
 
-var urlHost = window.location.host;
-var isEnglish = urlHost.indexOf(".com") > 0;
+
 var deviceName = "";
 
 var blocklyArea = document.getElementById("blocklyArea");
@@ -1552,3 +1551,4 @@ function checkitem() {
     $(".carousel-control-next").show();
   }
 }
+

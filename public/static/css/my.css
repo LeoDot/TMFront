@@ -316,7 +316,7 @@ body > div {
 }
 
 .btn-signin img {
-  height: var(--btn-bar-size);
+  height: var(--btn-bar-size*0.6);
   vertical-align: middle;
 }
 

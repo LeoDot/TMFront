@@ -71,20 +71,25 @@ function loadSignInButton(isSignedIn) {
 
 function loadGoogleClassButton(isReady) {
   let gclassDiv = document.getElementById('googleclass');
+  console.log(gclassDiv.firstChild)
+
   while (gclassDiv.firstChild) {
     gclassDiv.removeChild(gclassDiv.firstChild);
   }
-  if (isReady) {
+  console.log(gclassDiv.firstChild)
+
+  if (isReady) {  
     // Display button
     let googleClassButton = document.createElement('div');
     gclassDiv.title="Save to Share to google classroom"
+    googleClassButton.class = 'item';
     googleClassButton.id = 'googleclass-button';
     gclassDiv.appendChild(googleClassButton);
     gapi.sharetoclassroom.render(
       'googleclass-button',
       {
         'url': fileLink,
-        'size': '32',
+        // 'size': '32',
         'onsharestart': () => {
           let xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
           let data = Blockly.Xml.domToText(xml);
@@ -95,7 +100,7 @@ function loadGoogleClassButton(isReady) {
   } else {
     // Display notice instructing user to save first
     gclassDiv.title="Login in Google at first and than Share to google classroom"
-    gclassDiv.innerHTML = '<img src="static/media/GoogleClassroom.svg" style="opacity: 90%">'; 
+    gclassDiv.innerHTML = '<div class="item"><img src="static/media/GoogleClassroom.svg" style="opacity: 90%"></div>'; 
   }
 }
 
