@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-
+<head>
     <script type="text/javascript">
       var urlHost = window.location.host;
       var isEnglish = urlHost.indexOf(".com") > 0;
     </script>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <title>Tokylabs</title>
-    <link rel="icon" type="image/png" href="static/media/favicon.png" />
+    <link rel="icon" type="image/png" href="static/media/favicon.png"/>
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MWXV334');</script>
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MWXV334');</script>
     <!-- End Google Tag Manager -->
 
-    <script type="text/javascript" >
+    <script type="text/javascript">
       if ( isEnglish){
-        document.write("<script type='text/javascript' src='https://apis.google.com/js/platform.js' async defer><\/script>");
-      }
+            document.write("<script type='text/javascript' src='https://apis.google.com/js/platform.js' async defer><\/script>");
+        }
     </script>
 
     <!-- <script src="static/js/acorn_interpreter.js"></script> -->
@@ -40,231 +46,241 @@
     <script type="text/javascript" src="static/js/vue.min.js"></script>
     <script src="static/js/vex.combined.min.js"></script>
     <script>vex.defaultOptions.className = 'vex-theme-os'</script>
-    <link   href="static/css/vex.css" rel="stylesheet" />
-    <link   href="static/font-awesome/css/font-awesome.min.css"   rel="stylesheet">
-    <link   href="static/css/my.css"   rel="stylesheet">
+    <link href="static/css/vex.css" rel="stylesheet"/>
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/css/my.css" rel="stylesheet">
 
     <link href="static/css/gamepad.css" rel="stylesheet">
     <link href="static/css/widget.css" rel="stylesheet">
     <link href="static/css/tabs.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <!-- <link   href="icons/icon.css"   rel="stylesheet"> -->
     <style>
-      body {
-        background-color: #fff;
-        font-family: sans-serif;
-      }
-      h1 {
-        font-weight: normal;
-        font-size: 140%;
-      }
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+        }
 
-      #uploadInfoDiv {
-        display: none;
-      }
+        h1 {
+            font-weight: normal;
+            font-size: 140%;
+        }
 
-      #uploadInfoDiv > .success,
-      #uploadInfoDiv > .failure,
-      #uploadInfoDiv > .uploadprogress {
-        display: none;
-        font-size: 40px;
-      }
-      #uploadInfoDiv > .uploadprogress {
-        font-size: 16px;
-      }
+        #uploadInfoDiv {
+            display: none;
+        }
 
-      #uploadInfoDiv.success,
-      #uploadInfoDiv.failure,
-      #uploadInfoDiv.uploadprogress {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      #uploadInfoDiv.success > .success {
-        display: block;
-        color: #007bff;
-      }
-      #uploadInfoDiv.failure > .failure {
-        display: block;
-        color: #dc3545;
-      }
-      #uploadInfoDiv.uploadprogress > .uploadprogress {
-        display: block;
-        color: #fff;
-      }
+        #uploadInfoDiv > .success,
+        #uploadInfoDiv > .failure,
+        #uploadInfoDiv > .uploadprogress {
+            display: none;
+            font-size: 40px;
+        }
+
+        #uploadInfoDiv > .uploadprogress {
+            font-size: 16px;
+        }
+
+        #uploadInfoDiv.success,
+        #uploadInfoDiv.failure,
+        #uploadInfoDiv.uploadprogress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #uploadInfoDiv.success > .success {
+            display: block;
+            color: #007bff;
+        }
+
+        #uploadInfoDiv.failure > .failure {
+            display: block;
+            color: #dc3545;
+        }
+
+        #uploadInfoDiv.uploadprogress > .uploadprogress {
+            display: block;
+            color: #fff;
+        }
     </style>
 
     <!-- More JS loaded in the end of this file; for some reason it doesn't work if loaded early -->
 
-  </head>
-  <body>
+</head>
+<body>
+<div id="app"></div>
 
-    <div id="app"></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWXV334"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWXV334"
-                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <div class="header2">
-      <div class="btn-file">
-        <div class="item" onclick="openFile()" title="open block">
-          <i class="fa fa-folder-open-o" aria-hidden="true" ></i>
-        </div>
-        <div class="item" onclick="saveFile()" title="save block" >
-          <i class="fa fa-floppy-o" aria-hidden="true"></i>
-        </div>
-	    <script type="text/javascript" >
+<div class="header2">
+    <div class="btnBox1">
+        <div class="btn-file">
+            <div class="item" onclick="openFile()" title="open block">
+                <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+            </div>
+            <div class="item" onclick="saveFile()" title="save block">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </div>
+            <script type="text/javascript">
 	      if ( isEnglish ) {
-	        document.write('<div class="gclass" id="googleclass" title="Login in Google at first and than Share to google classroom">');
-	        document.write('<div class="item"><img src="static/media/GoogleClassroom.svg" style="opacity: 90%"></div></div>\r\n');
-	        document.write('<div class="divider"></div>\r\n');
-	      } 
-	    </script>
+                    document.write('<div class="gclass" id="googleclass" title="Login in Google at first and than Share to google classroom">');
+                    document.write('<img src="static/media/GoogleClassroom.svg" style="opacity: 90%"></div>\r\n');
+                    document.write('<div class="divider"></div>\r\n');
+                }
+            </script>
 
 
-        <div class="item" onclick="undo()" title="undo">
-          <i class="fa fa-rotate-left" aria-hidden="true"></i>
-        </div>
-        <div class="item" onclick="redo()" title="redo">
-          <i class="fa fa-rotate-right" aria-hidden="true"></i>
-        </div>
-        <div class="item" onclick="discard()" title="clear workspace">
-          <i class="fa fa-times" aria-hidden="true" style="padding-left: 8px;"></i>
-        </div>
-
-
-
-      </div>
-
-      <div class="bar-function">
-        <div class="btn-gamepad" id="gamePad">
-          <a class="item" onclick="toggleShowCtrl()">
-            <i class="fa fa-gamepad" aria-hidden="true" align="center"> </i>
-          </a>
-        </div>
-      </div>
-
-      <div class="bar-box">
-        <div class="btn-bar">
-          <div id="bleVueContainer"></div>
-          <div class="item" onclick="upload()" id="runButton" title="run code" style="margin-right: 10px;">
-            <i class="fa fa-play" aria-hidden="true" align="center" style="color: orange; margin-left: 5px;"> </i>
-          </div>
-
-
-          <div id="uploadInfoDiv" title="" style="margin-right: 10px;">
-            <i class="fa fa-smile-o success" aria-hidden="true"></i>
-            <i class="fa fa-frown-o failure" aria-hidden="true"></i>
-            <div class="uploadprogress">0%</div>
-          </div>
-
-          <div class="item" onclick="uploadAR()" id="arButton" title="Generate AR" style="display: none;">
-            <i class="fa fa-play" aria-hidden="true" align="center" style="color: purple;"> </i>
-          </div>
-          <div class="item" onclick="viewQR()" id="arCodeButton" title="View Code" style="display: none;">
-            <i class="fa fa-qrcode" aria-hidden="true" align="center" style="color: black; margin-left: 5px;"> </i>
-          </div>
+            <div class="item" onclick="undo()" title="undo">
+                <i class="fa fa-rotate-left" aria-hidden="true"></i>
+            </div>
+            <div class="item" onclick="redo()" title="redo">
+                <i class="fa fa-rotate-right" aria-hidden="true"></i>
+            </div>
+            <div class="item" onclick="discard()" title="clear workspace">
+                <i class="fa fa-times" aria-hidden="true" style="padding-left: 8px;"></i>
+            </div>
 
         </div>
 
-      </div>
 
-      <div id="signin-button" class="btn-signin" style="margin-right:2px;">
-        <!-- <i class="fa fa-sign-in" aria-hidden="true"></i>
-        <img src="static/media/GoogleLogo.png"> -->
-      </div>
+        <div class="bar-box">
+            <div class="btn-bar">
+                <div id="bleVueContainer"></div>
+                <div class="item" onclick="upload()" id="runButton" title="run code" style="margin-right: 10px;">
+                    <i class="fa fa-play" aria-hidden="true" align="center" style="color: orange; margin-left: 5px;"> </i>
+                </div>
 
+
+                <div id="uploadInfoDiv" title="" style="margin-right: 10px;">
+                    <i class="fa fa-smile-o success" aria-hidden="true"></i>
+                    <i class="fa fa-frown-o failure" aria-hidden="true"></i>
+                    <div class="uploadprogress">0%</div>
+                </div>
+
+                <div class="item" onclick="uploadAR()" id="arButton" title="Generate AR" style="display: none;">
+                    <i class="fa fa-play" aria-hidden="true" align="center" style="color: purple;"> </i>
+                </div>
+                <div class="item" onclick="viewQR()" id="arCodeButton" title="View Code" style="display: none;">
+                    <i class="fa fa-qrcode" aria-hidden="true" align="center" style="color: black; margin-left: 5px;"> </i>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
+    <div class="btnBox2 show">
+        <div class="btn-gamepad" id="gamePad">
+            <a class="item" onclick="toggleShowCtrl()">
+                <i class="fa fa-gamepad" aria-hidden="true" align="center"> </i>
+            </a>
+        </div>
 
-    <!-- game-control -->
-    <div class="game-control-mask">
-      <div class="game-control">
+        <div id="signin-button" class="btn-signin" style="margin-right:2px;">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <img src="static/media/GoogleLogo.png">
+        </div>
+    </div>
+
+    <div class="switch-btn">
+        <i class="fa fa-chevron-left aria-hidden=" true"></i>
+    </div>
+
+</div>
+
+
+<!-- game-control -->
+<div class="game-control-mask">
+    <div class="game-control">
         <img class="game-control-bk" src="static/media/gamepad.png"/>
         <div class="game-control-ctrl">
-          <div class="center">
-            <div id="leftBtn" class="left">
-              <div></div>
+            <div class="center">
+                <div id="leftBtn" class="left">
+                    <div></div>
+                </div>
+                <div id="rightBtn" class="right">
+                    <div></div>
+                </div>
+                <div id="topBtn" class="top">
+                    <div></div>
+                </div>
+                <div id="bottomBtn" class="bottom">
+                    <div></div>
+                </div>
             </div>
-            <div id="rightBtn" class="right">
-              <div></div>
-            </div>
-            <div id="topBtn" class="top">
-              <div></div>
-            </div>
-            <div id="bottomBtn" class="bottom">
-              <div></div>
-            </div>
-          </div>
         </div>
         <div class="game-control-rangebox a">
-          <input id="rangeA" type="range" min="0" max="100" step="5" value="0">
+            <input id="rangeA" type="range" min="0" max="100" step="5" value="0">
         </div>
         <div class="game-control-rangebox b">
-          <input id="rangeB" type="range" min="0" max="100" step="5" value="0">
+            <input id="rangeB" type="range" min="0" max="100" step="5" value="0">
         </div>
         <div class="game-control-btnbox">
-          <div id="btnA" class="btn-a">
-            <img src="static/media/btn-a.png"/>
-          </div>
-          <div id="btnB" class="btn-b">
-            <img src="static/media/btn-b.png"/>
-          </div>
+            <div id="btnA" class="btn-a">
+                <img src="static/media/btn-a.png"/>
+            </div>
+            <div id="btnB" class="btn-b">
+                <img src="static/media/btn-b.png"/>
+            </div>
         </div>
 
         <div class="game-control-close" onclick="toggleShowCtrl()">
-          <i class="fa fa-window-close" aria-hidden="true"></i>
+            <i class="fa fa-window-close" aria-hidden="true"></i>
         </div>
-      </div>
-
     </div>
 
+</div>
 
 
-
-    <div class="shop-banner-mask" >
-      <div class="shop-banner">
-        <a  href="http://tokylabs.com/shop" target="_blank">
-          <img class="shop-banner-bk" src="static/media/shopbanner.png"/>
+<div class="shop-banner-mask">
+    <div class="shop-banner">
+        <a href="http://tokylabs.com/shop" target="_blank">
+            <img class="shop-banner-bk" src="static/media/shopbanner.png"/>
         </a>
 
         <div class="shop-banner-close" onclick="closeShopBanner()">
-          <i class="fa fa-window-close" aria-hidden="true"></i>
+            <i class="fa fa-window-close" aria-hidden="true"></i>
         </div>
-      </div>
     </div>
+</div>
 
 
+</div>
 
+<!-- blockly -->
+<div class="content" id="blocklyDiv"></div>
+<div id="debug-win" style="display: none;">
+    <textarea id="" disabled="disabled"></textarea>
+    <div id="debug-btn" class="fa fa-hand-o-up"></div>
+</div>
+<input type="file" id="load" accept=".xml" style="display: none;"/>
+</div>
 
-    </div>
+<xml id="tokymakerToolbox" style="display: none">
 
-    <!-- blockly -->
-    <div class="content" id="blocklyDiv"></div>
-    <div id="debug-win" style="display: none;">
-      <textarea id="" disabled="disabled"></textarea>
-      <div id="debug-btn" class="fa fa-hand-o-up"></div>
-    </div>
-    <input type="file" id="load"  accept=".xml" style="display: none;"/>
-    </div>
-
-    <xml id="tokymakerToolbox" style="display: none">
-
-      <category name="Control" colour=120 icon="fa-arrows">
+    <category name="Control" colour=120 icon="fa-arrows">
         <block type="main_repeat"></block>
 
         <block type="controls_repeat_ext">
-          <value name="TIMES">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
+            <value name="TIMES">
+                <block type="math_number">
+                    <field name="NUM">10</field>
+                </block>
+            </value>
         </block>
 
         <block type="repeat_until"></block>
@@ -278,19 +294,19 @@
         <block type="controls_if"></block>
 
         <block type="delayms">
-          <value name="delay_time">
-            <block type="math_number">
-              <field name="NUM">1000</field>
-            </block>
-          </value>
+            <value name="delay_time">
+                <block type="math_number">
+                    <field name="NUM">1000</field>
+                </block>
+            </value>
         </block>
 
         <block type="wait_until"></block>
         <block type="disable_upload"></block>
 
-      </category>
+    </category>
 
-      <category name="Input" colour="50" icon="fa-sign-in">
+    <category name="Input" colour="50" icon="fa-sign-in">
         <block type="read_input"></block>
         <block type="isbuttonclicked"></block>
         <block type="isbuttonpressing"></block>
@@ -303,30 +319,30 @@
         <block type="GamepadSliderInput"></block>
         <block type="math_mapinput"></block>
 
-      </category>
+    </category>
 
-      <category name="Output" colour="20" icon="fa-sign-out">
+    <category name="Output" colour="20" icon="fa-sign-out">
         <block type="logic_hl"></block>
         <block type="outputState">
-          <value name="state">
-            <block type="logic_hl">
-            </block>
-          </value>
+            <value name="state">
+                <block type="logic_hl">
+                </block>
+            </value>
         </block>
         <block type="output">
-          <value name="power">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
+            <value name="power">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
         </block>
 
         <block type="outservo">
-          <value name="angle">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
+            <value name="angle">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
         </block>
 
         <block type="dotdrv_init"></block>
@@ -334,232 +350,232 @@
         <block type="playnote"></block>
 
         <block type="playtone">
-          <value name="Frequency">
-            <block type="math_number">
-              <field name="NUM">260</field>
-            </block>
-          </value>
+            <value name="Frequency">
+                <block type="math_number">
+                    <field name="NUM">260</field>
+                </block>
+            </value>
         </block>
 
         <block type="muteout">
         </block>
 
         <block type="setserialrgb">
-          <value name="red">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
-          <value name="green">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
-          <value name="blue">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
-          <value name="index">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="red">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="green">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="blue">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="index">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
 
         <block type="clrserialrgb"></block>
         <block type="updateserialrgb"></block>
-      </category>
+    </category>
 
-      <category name="Display" colour="300" icon="fa-television">
+    <category name="Display" colour="300" icon="fa-television">
         <block type="screen_setcursor">
-          <value name="x">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="y">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="x">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="y">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
-        <block type="screen_settextsize"> </block>
+        <block type="screen_settextsize"></block>
 
         <block type="print_screen">
-          <value name="content">
-            <block type="text"></block>
-          </value>
+            <value name="content">
+                <block type="text"></block>
+            </value>
         </block>
 
         <block type="screen_println"></block>
         <block type="screen_drawPixel"></block>
         <block type="screen_drawline">
-          <value name="nextX">
-            <block type="math_number">
-              <field name="NUM">128</field>
-            </block>
-          </value>
-          <value name="nextY">
-            <block type="math_number">
-              <field name="NUM">64</field>
-            </block>
-          </value>
+            <value name="nextX">
+                <block type="math_number">
+                    <field name="NUM">128</field>
+                </block>
+            </value>
+            <value name="nextY">
+                <block type="math_number">
+                    <field name="NUM">64</field>
+                </block>
+            </value>
         </block>
 
         <block type="screen_drawcircle">
-          <value name="Radius">
-            <block type="math_number">
-              <field name="NUM">3</field>
-            </block>
-          </value>
+            <value name="Radius">
+                <block type="math_number">
+                    <field name="NUM">3</field>
+                </block>
+            </value>
         </block>
 
         <block type="screen_fillcircle">
-          <value name="Radius">
-            <block type="math_number">
-              <field name="NUM">3</field>
-            </block>
-          </value>
+            <value name="Radius">
+                <block type="math_number">
+                    <field name="NUM">3</field>
+                </block>
+            </value>
         </block>
 
         <block type="clear_screen"></block>
         <block type="update_screen"></block>
 
         <block type="console_print">
-          <value name="content">
-            <block type="text"></block>
-          </value>
+            <value name="content">
+                <block type="text"></block>
+            </value>
         </block>
 
-      </category>
+    </category>
 
-      <category name="Number" colour="230" icon="fa-calculator">
+    <category name="Number" colour="230" icon="fa-calculator">
         <block type="math_number"></block>
         <block type="math_round"></block>
         <block type="math_arithmetic">
-          <value name="B">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
+            <value name="B">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
         </block>
         <block type="math_single"></block>
         <block type="random">
-          <value name="high">
-            <block type="math_number">
-              <field name="NUM">100</field>
-            </block>
-          </value>
+            <value name="high">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
         </block>
         <block type="math_map"></block>
         <block type="static_array_set">
-          <value name="index">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="data">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
+            <value name="index">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="data">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
         </block>
         <block type="static_array_get">
-          <value name="index">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="index">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
 
         <block type="matrix_set_all"></block>
         <block type="matrix_set_one">
-          <value name="row">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="col">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="data">
-            <block type="math_number"></block>
-          </value>
+            <value name="row">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="col">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="data">
+                <block type="math_number"></block>
+            </value>
         </block>
         <block type="matrix_get">
-          <value name="row">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="col">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="row">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="col">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
-      </category>
+    </category>
 
-      <category name="Logic" colour="210" icon="fa-random">
+    <category name="Logic" colour="210" icon="fa-random">
         <block type="logic_boolean"></block>
         <block type="logic_operation"></block>
         <block type="logic_compare">
-          <value name="B">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
+            <value name="B">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
         </block>
         <block type="logic_negate"></block>
-      </category>
+    </category>
 
-      <category name="Text" colour="160" icon="fa-font">
+    <category name="Text" colour="160" icon="fa-font">
         <block type="text"></block>
         <block type="text_join_str_num">
-          <value name="label">
-            <block type="text"></block>
-          </value>
-          <value name="data">
-            <block type="math_number"></block>
-          </value>
+            <value name="label">
+                <block type="text"></block>
+            </value>
+            <value name="data">
+                <block type="math_number"></block>
+            </value>
         </block>
-      </category>
+    </category>
 
-      <category name="Variable" colour="330" custom="VARIABLE" icon="fa-bars"></category>
-      <category name="Functions" colour="80" custom="PROCEDURE" icon="fa-puzzle-piece"></category>
+    <category name="Variable" colour="330" custom="VARIABLE" icon="fa-bars"></category>
+    <category name="Functions" colour="80" custom="PROCEDURE" icon="fa-puzzle-piece"></category>
 
 
-      <category name="IOT" colour="180" icon="fa-cloud">
+    <category name="IOT" colour="180" icon="fa-cloud">
         <block type="wifi_set"></block>
         <block type="iotplatform_login"></block>
         <block type="iot_isconnected"></block>
         <block type="iotplatform_publish">
-          <value name="data">
-            <block type="math_number"></block>
-          </value>
+            <value name="data">
+                <block type="math_number"></block>
+            </value>
         </block>
         <block type="iotplatform_getdata"></block>
 
         <label text="IOT services" web-class="labelStyle"></label>
-        <button text="IFTTT"    callbackKey="key_gotoIfttt"></button>
+        <button text="IFTTT" callbackKey="key_gotoIfttt"></button>
         <button text="adafruit" callbackKey="key_gotoIoAdafruit"></button>
 
-      </category>
+    </category>
 
 
-      <category name="Camera" colour="320" icon="fa-camera">
+    <category name="Camera" colour="320" icon="fa-camera">
         <block type="pixy_init"></block>
         <block type="pixy_changemode"></block>
 
         <block type="pixy_setcamerabrightness">
-          <value name="brightness">
-            <block type="math_number">
-              <field name="NUM">60</field>
-            </block>
-          </value>
+            <value name="brightness">
+                <block type="math_number">
+                    <field name="NUM">60</field>
+                </block>
+            </value>
         </block>
 
         <block type="pixy_setlamp">
@@ -567,21 +583,21 @@
         </block>
 
         <block type="pixy_setled">
-          <value name="red">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
-          <value name="green">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
-          <value name="blue">
-            <block type="math_number">
-              <field name="NUM">0</field>
-            </block>
-          </value>
+            <value name="red">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="green">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+            <value name="blue">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
         </block>
 
         <label text="CCC Mode" web-class="labelStyle"></label>
@@ -591,22 +607,22 @@
 
 
         <block type="pixy_getblockattr">
-          <value name="index">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="index">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
 
         <block type="pixy_ishasblockkind">
         </block>
 
         <block type="pixy_isblockalive">
-          <value name="id">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="id">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
 
         <label text="Line Mode" web-class="labelStyle"></label>
@@ -627,23 +643,21 @@
 
         <block type="pixy_getintersectionlinesnum"></block>
         <block type="pixy_getintersectionlineangle">
-          <value name="lineIndex">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
+            <value name="lineIndex">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
         </block>
 
 
-
-      </category>
-
+    </category>
 
 
-    </xml>
+</xml>
 
-    <xml id="arToolbox" style="display: none">
-      <category name="AR" colour=120 icon="fa-eye">
+<xml id="arToolbox" style="display: none">
+    <category name="AR" colour=120 icon="fa-eye">
         <block type="ar_text_create"></block>
         <block type="ar_text_update"></block>
         <block type="ar_graph_create"></block>
@@ -654,21 +668,21 @@
         <block type="ar_rotation_set"></block>
         <block type="ar_position_set"></block>
         <block type="ar_remove"></block>
-      </category>
-      <category name="Text" colour="160" icon="fa-font">
+    </category>
+    <category name="Text" colour="160" icon="fa-font">
         <block type="text"></block>
         <block type="text_join">
-          <value name="label">
-            <block type="text"></block>
-          </value>
-          <value name="label">
-            <block type="text"></block>
-          </value>
+            <value name="label">
+                <block type="text"></block>
+            </value>
+            <value name="label">
+                <block type="text"></block>
+            </value>
         </block>
-      </category>
-      <category name="IOT" colour="180" icon="fa-cloud">
+    </category>
+    <category name="IOT" colour="180" icon="fa-cloud">
         <block type="iot_feed"></block>
-      </category>
+    </category>
     <category name="Logic" colour="210" icon="fa-random">
         <block type="controls_if"></block>
         <block type="logic_compare"></block>
@@ -677,466 +691,463 @@
         <block type="logic_boolean"></block>
         <block type="logic_null"></block>
         <block type="logic_ternary"></block>
-      </category>
+    </category>
     <category name="Loops" colour="120" icon="fa-circle-o-notch">
         <block type="async_loop"></block>
         <block type="controls_repeat_ext">
-          <value name="TIMES">
-            <shadow type="math_number">
-              <field name="NUM">10</field>
-            </shadow>
-          </value>
+            <value name="TIMES">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
         </block>
         <block type="controls_whileUntil"></block>
         <block type="controls_for">
-          <value name="FROM">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="TO">
-            <shadow type="math_number">
-              <field name="NUM">10</field>
-            </shadow>
-          </value>
-          <value name="BY">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
+            <value name="FROM">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="TO">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+            <value name="BY">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
         </block>
         <block type="controls_forEach"></block>
         <block type="controls_flow_statements"></block>
-      </category>
+    </category>
     <category name="Math" colour="230" icon="fa-calculator">
         <block type="math_number"></block>
         <block type="math_arithmetic">
-          <value name="A">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="B">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
+            <value name="A">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="B">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_single">
-          <value name="NUM">
-            <shadow type="math_number">
-              <field name="NUM">9</field>
-            </shadow>
-          </value>
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">9</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_trig">
-          <value name="NUM">
-            <shadow type="math_number">
-              <field name="NUM">45</field>
-            </shadow>
-          </value>
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">45</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_constant"></block>
         <block type="math_number_property">
-          <value name="NUMBER_TO_CHECK">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
+            <value name="NUMBER_TO_CHECK">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_round">
-          <value name="NUM">
-            <shadow type="math_number">
-              <field name="NUM">3.1</field>
-            </shadow>
-          </value>
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">3.1</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_on_list"></block>
         <block type="math_modulo">
-          <value name="DIVIDEND">
-            <shadow type="math_number">
-              <field name="NUM">64</field>
-            </shadow>
-          </value>
-          <value name="DIVISOR">
-            <shadow type="math_number">
-              <field name="NUM">10</field>
-            </shadow>
-          </value>
+            <value name="DIVIDEND">
+                <shadow type="math_number">
+                    <field name="NUM">64</field>
+                </shadow>
+            </value>
+            <value name="DIVISOR">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_constrain">
-          <value name="VALUE">
-            <shadow type="math_number">
-              <field name="NUM">50</field>
-            </shadow>
-          </value>
-          <value name="LOW">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="HIGH">
-            <shadow type="math_number">
-              <field name="NUM">100</field>
-            </shadow>
-          </value>
+            <value name="VALUE">
+                <shadow type="math_number">
+                    <field name="NUM">50</field>
+                </shadow>
+            </value>
+            <value name="LOW">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="HIGH">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_random_int">
-          <value name="FROM">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="TO">
-            <shadow type="math_number">
-              <field name="NUM">100</field>
-            </shadow>
-          </value>
+            <value name="FROM">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="TO">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
         </block>
         <block type="math_random_float"></block>
-      </category>
+    </category>
     <category name="Text" colour="160" icon="fa-font">
         <block type="text"></block>
         <block type="text_join"></block>
         <block type="text_append">
-          <value name="TEXT">
-            <shadow type="text"></shadow>
-          </value>
+            <value name="TEXT">
+                <shadow type="text"></shadow>
+            </value>
         </block>
         <block type="text_length">
-          <value name="VALUE">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
-            </shadow>
-          </value>
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
         </block>
         <block type="text_isEmpty">
-          <value name="VALUE">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
         </block>
         <block type="text_indexOf">
-          <value name="VALUE">
-            <block type="variables_get">
-              <field name="VAR">text</field>
-            </block>
-          </value>
-          <value name="FIND">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
-            </shadow>
-          </value>
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">text</field>
+                </block>
+            </value>
+            <value name="FIND">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
         </block>
         <block type="text_charAt">
-          <value name="VALUE">
-            <block type="variables_get">
-              <field name="VAR">text</field>
-            </block>
-          </value>
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">text</field>
+                </block>
+            </value>
         </block>
         <block type="text_getSubstring">
-          <value name="STRING">
-            <block type="variables_get">
-              <field name="VAR">text</field>
-            </block>
-          </value>
+            <value name="STRING">
+                <block type="variables_get">
+                    <field name="VAR">text</field>
+                </block>
+            </value>
         </block>
         <block type="text_changeCase">
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
-            </shadow>
-          </value>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
         </block>
         <block type="text_trim">
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
-            </shadow>
-          </value>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
         </block>
         <block type="text_print">
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
-            </shadow>
-          </value>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
         </block>
         <block type="text_prompt_ext">
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
-            </shadow>
-          </value>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">abc</field>
+                </shadow>
+            </value>
         </block>
-      </category>
+    </category>
     <category name="Lists" colour="260" icon="fa-sort-amount-desc">
         <block type="lists_create_with">
-          <mutation items="0"></mutation>
+            <mutation items="0"></mutation>
         </block>
         <block type="lists_create_with"></block>
         <block type="lists_repeat">
-          <value name="NUM">
-            <shadow type="math_number">
-              <field name="NUM">5</field>
-            </shadow>
-          </value>
+            <value name="NUM">
+                <shadow type="math_number">
+                    <field name="NUM">5</field>
+                </shadow>
+            </value>
         </block>
         <block type="lists_length"></block>
         <block type="lists_isEmpty"></block>
         <block type="lists_indexOf">
-          <value name="VALUE">
-            <block type="variables_get">
-              <field name="VAR">list</field>
-            </block>
-          </value>
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
         </block>
         <block type="lists_getIndex">
-          <value name="VALUE">
-            <block type="variables_get">
-              <field name="VAR">list</field>
-            </block>
-          </value>
+            <value name="VALUE">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
         </block>
         <block type="lists_setIndex">
-          <value name="LIST">
-            <block type="variables_get">
-              <field name="VAR">list</field>
-            </block>
-          </value>
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
         </block>
         <block type="lists_getSublist">
-          <value name="LIST">
-            <block type="variables_get">
-              <field name="VAR">list</field>
-            </block>
-          </value>
+            <value name="LIST">
+                <block type="variables_get">
+                    <field name="VAR">list</field>
+                </block>
+            </value>
         </block>
         <block type="lists_split">
-          <value name="DELIM">
-            <shadow type="text">
-              <field name="TEXT">,</field>
-            </shadow>
-          </value>
+            <value name="DELIM">
+                <shadow type="text">
+                    <field name="TEXT">,</field>
+                </shadow>
+            </value>
         </block>
         <block type="lists_sort"></block>
-      </category>
+    </category>
     <category name="Colour" colour="20" icon="fa-paint-brush">
         <block type="colour_picker"></block>
         <block type="colour_random"></block>
         <block type="colour_rgb">
-          <value name="RED">
-            <shadow type="math_number">
-              <field name="NUM">100</field>
-            </shadow>
-          </value>
-          <value name="GREEN">
-            <shadow type="math_number">
-              <field name="NUM">50</field>
-            </shadow>
-          </value>
-          <value name="BLUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
+            <value name="RED">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>
+            <value name="GREEN">
+                <shadow type="math_number">
+                    <field name="NUM">50</field>
+                </shadow>
+            </value>
+            <value name="BLUE">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
         </block>
         <block type="colour_blend">
-          <value name="COLOUR1">
-            <shadow type="colour_picker">
-              <field name="COLOUR">#ff0000</field>
-            </shadow>
-          </value>
-          <value name="COLOUR2">
-            <shadow type="colour_picker">
-              <field name="COLOUR">#3333ff</field>
-            </shadow>
-          </value>
-          <value name="RATIO">
-            <shadow type="math_number">
-              <field name="NUM">0.5</field>
-            </shadow>
-          </value>
+            <value name="COLOUR1">
+                <shadow type="colour_picker">
+                    <field name="COLOUR">#ff0000</field>
+                </shadow>
+            </value>
+            <value name="COLOUR2">
+                <shadow type="colour_picker">
+                    <field name="COLOUR">#3333ff</field>
+                </shadow>
+            </value>
+            <value name="RATIO">
+                <shadow type="math_number">
+                    <field name="NUM">0.5</field>
+                </shadow>
+            </value>
         </block>
-      </category>
+    </category>
     <!--<sep></sep>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Functions" colour="290" custom="PROCEDURE"></category>
     <sep></sep>
     <category name="Block Library" colour="260" id="blockLibCategory"></category>-->
-    </xml>
+</xml>
 
-    <!-- Begin tabs -->
-    <div id="tabcontainer" class="tabvertical ">
-      <div  id="tabrow" class="m-0 pl-0 row">
+<!-- Begin tabs -->
+<div id="tabcontainer" class="tabvertical ">
+    <div id="tabrow" class="m-0 pl-0 row">
         <div id="col1" class="col">
         </div>
 
-        <div class="col-px10"  >
-<!--          <div class="nav flex-column nav-pills nav-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: block">-->
-<!--            <a onclick="showTab(event)" class="nav-link active vertical" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Console</a>-->
-<!--            <a onclick="showTab(event)" class="nav-link vertical" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Help</a>-->
-<!--          </div>-->
+        <div class="col-px10">
+            <!--          <div class="nav flex-column nav-pills nav-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: block">-->
+            <!--            <a onclick="showTab(event)" class="nav-link active vertical" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Console</a>-->
+            <!--            <a onclick="showTab(event)" class="nav-link vertical" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Help</a>-->
+            <!--          </div>-->
         </div>
         <div id="tabContent" class="col8">
-          <div class="tab-content " id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-              <div onclick="closeTab(event)" class="closed overlay">
+            <div class="tab-content " id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div onclick="closeTab(event)" class="closed overlay">
 
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
 
-              </div>
-              <div id="console" class="container">
-                <textarea id="output" class="output" disabled="disabled"></textarea>
-              </div>
-            </div>
+                    </div>
+                    <div id="console" class="container">
+                        <textarea id="output" class="output" disabled="disabled"></textarea>
+                    </div>
+                </div>
 
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-              <div  class="closed">
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="closed">
 
-                <button onclick="closeTab(event)" type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                        <button onclick="closeTab(event)" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
 
-              </div>
+                    </div>
 
-              <!-- <div id="giftab" > -->
-              <div id="carouselExampleControls" class="carousel slide " data-interval="false" data-ride="carousel">
-                <div class="carousel-inner">
+                    <!-- <div id="giftab" > -->
+                    <div id="carouselExampleControls" class="carousel slide " data-interval="false" data-ride="carousel">
+                        <div class="carousel-inner">
 
-                  <div class="carousel-item active">
-<!--                    <img class="d-block w-100" src="static/media/walk/1.gif" alt="First slide">-->
-                    <span>1. Plug in the micro usb cord to TokyMaker, and connect the cord with a power adapter.</span>
-                  </div>
+                            <div class="carousel-item active">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/1.gif" alt="First slide">-->
+                                <span>1. Plug in the micro usb cord to TokyMaker, and connect the cord with a power adapter.</span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/2.gif">-->
-                    <span>2. The TokyMaker will automatically turn on once connected to power. It will display a 3 digit combination. This is its ID combination.</span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/2.gif">-->
+                                <span>2. The TokyMaker will automatically turn on once connected to power. It will display a 3 digit combination. This is its ID combination.</span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/3.gif">-->
-                    <span>    3. Turn on the Bluetooth in your device. You don’t need to connect with anything yet.<br/>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/3.gif">-->
+                                <span>    3. Turn on the Bluetooth in your device. You don’t need to connect with anything yet.<br/>
                             Minimum requirement: Bluetooth BLE 4.0 and up. If your Bluetooth version is lower than this requirement, please use a Bluetooth USB dongle to connect to TokyMaker. You would need to plug the dongle into your USB port before you connect.</span>
-                  </div>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/4.gif">-->
-                    <span>    4. Install Chrome browser in your device. You can download chrome for your device at links below:<br/>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/4.gif">-->
+                                <span>    4. Install Chrome browser in your device. You can download chrome for your device at links below:<br/>
                                 Android users: <br/>
-                                <a href="https://create.tokylabs.cn/download/chrome-76-armeabi-v7a.apk" >https://create.tokylabs.cn/download/chrome-76-armeabi-v7a.apk</a><br/>
+                                <a href="https://create.tokylabs.cn/download/chrome-76-armeabi-v7a.apk">https://create.tokylabs.cn/download/chrome-76-armeabi-v7a.apk</a><br/>
                                 Windows users(64bit):
-                                <a href="https://create.tokylabs.cn/download/ChromeStandaloneSetup64.exe" >https://create.tokylabs.cn/download/ChromeStandaloneSetup64.exe </a><br/>
+                                <a href="https://create.tokylabs.cn/download/ChromeStandaloneSetup64.exe">https://create.tokylabs.cn/download/ChromeStandaloneSetup64.exe </a><br/>
                                 Windows users(32bit):
-                                <a href="https://create.tokylabs.cn/download/ChromeStandaloneSetup.exe" >https://create.tokylabs.cn/download/ChromeStandaloneSetup.exe </a><br/>
+                                <a href="https://create.tokylabs.cn/download/ChromeStandaloneSetup.exe">https://create.tokylabs.cn/download/ChromeStandaloneSetup.exe </a><br/>
                                 Mac users:
-                                <a href="https://create.tokylabs.cn/download/googlechrome.dmg" >https://create.tokylabs.cn/download/googlechrome.dmg </a><br/>
+                                <a href="https://create.tokylabs.cn/download/googlechrome.dmg">https://create.tokylabs.cn/download/googlechrome.dmg </a><br/>
                                 Windows7 and Windows8 users:
-                                <a href="https://create.tokylabs.cn/download/tokylabsElectron.Setup.0.0.2.exe" >https://create.tokylabs.cn/download/tokylabsElectron.Setup.0.0.2.exe </a></br/>
+                                <a href="https://create.tokylabs.cn/download/tokylabsElectron.Setup.0.0.2.exe">https://create.tokylabs.cn/download/tokylabsElectron.Setup.0.0.2.exe </a></br
+                                    />
                               </span>
-                  </div>
+                            </div>
 
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/5.gif">-->
-                    <span>5. Go to <a href="create.tokylabs.com">create.tokylabs.com</a></span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/5.gif">-->
+                                <span>5. Go to <a href="create.tokylabs.com">create.tokylabs.com</a></span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/6.gif">-->
-                    <span>6. Click on the Bluetooth icon in the webpage, and find your TokyMaker ID inside the drop down menu. Click join.</span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/6.gif">-->
+                                <span>6. Click on the Bluetooth icon in the webpage, and find your TokyMaker ID inside the drop down menu. Click join.</span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/7.gif">-->
-                    <span>7. TokyMaker is programmed by a visual language that supports drag and drop. You can assemble and delete code blocks using this method.</span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/7.gif">-->
+                                <span>7. TokyMaker is programmed by a visual language that supports drag and drop. You can assemble and delete code blocks using this method.</span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/8.gif">-->
-                    <span>8. Assemble a code that prints a message in the TokyMaker display. You will need a repeat block, a screen:clear block, a screen:print block, and a screen:display block.</span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/8.gif">-->
+                                <span>8. Assemble a code that prints a message in the TokyMaker display. You will need a repeat block, a screen:clear block, a screen:print block, and a screen:display block.</span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/9.gif">-->
-                    <span>9. Type in “Hello!”, and upload. Observe your TokyMaker, it should be displaying a message. Congratulations! You have just written your first program!</span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/9.gif">-->
+                                <span>9. Type in “Hello!”, and upload. Observe your TokyMaker, it should be displaying a message. Congratulations! You have just written your first program!</span>
+                            </div>
 
-                  <div class="carousel-item">
-<!--                    <img class="d-block w-100" src="static/media/walk/10.gif">-->
-                    <span>10. You can learn more about TokyMaker by checking out the cool projects in the community page and step-to-step tutorials in the learn page under our website. Be sure to follow us on social media!</span>
-                  </div>
+                            <div class="carousel-item">
+                                <!--                    <img class="d-block w-100" src="static/media/walk/10.gif">-->
+                                <span>10. You can learn more about TokyMaker by checking out the cool projects in the community page and step-to-step tutorials in the learn page under our website. Be sure to follow us on social media!</span>
+                            </div>
 
-                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
 
-                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+
+                        </div>
+                    </div>
 
                 </div>
-              </div>
+
+                <!-- </div> -->
+
 
             </div>
-
-            <!-- </div> -->
-
-
-
-
-
-          </div>
         </div>
-      </div>
+    </div>
 
 
-
-      <!-- Modal vertical centered-->
-      <div class="modal fade" id="noChrome" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal vertical centered-->
+    <div class="modal fade" id="noChrome" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Not Chrome browser</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Not Chrome browser</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You need a Chrome Browser to use this website, please download <a href="https://www.google.com/chrome/">here</a>
+                </div>
             </div>
-            <div class="modal-body">
-              You need a Chrome Browser to use this website, please download <a href="https://www.google.com/chrome/">here</a>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-      <!-- end tabs -->
-      <script type="text/javascript" >
+    <!-- end tabs -->
+    <script type="text/javascript">
         if ( isEnglish ) {
-          document.write('<script src="static/js/qrcode.min.js"><\/script>\r\n');
-          document.write('<script src="static/js/google.js"><\/script>\r\n');
-          document.write('<script src="static/js/ar.js"><\/script>\r\n');
+            document.write('<script src="static/js/qrcode.min.js"><\/script>\r\n');
+            document.write('<script src="static/js/google.js"><\/script>\r\n');
+            document.write('<script src="static/js/ar.js"><\/script>\r\n');
         }
-      </script>
+    </script>
 
 
-      <script src="static/js/main.js"></script>
+    <script src="static/js/main.js"></script>
 
-      <!-- Google API, to be used with the Save to Drive button -->
-      <script type="text/javascript" >
+    <!-- Google API, to be used with the Save to Drive button -->
+    <script type="text/javascript">
 
         if ( isEnglish ) {
-          document.write('<script async defer src="https://apis.google.com/js/api.js" '+
-            'onload="this.onload=function(){};handleClientLoad()" '+
-            'onreadystatechange="if (this.readyState === \"complete\") this.onload()"><\/script>');
+            document.write('<script async defer src="https://apis.google.com/js/api.js" ' +
+                'onload="this.onload=function(){};handleClientLoad()" ' +
+                'onreadystatechange="if (this.readyState === \"complete\") this.onload()"><\/script>');
         }
-      </script>
+    </script>
 
 
-  </body>
+</body>
 </html>

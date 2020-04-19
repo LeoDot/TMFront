@@ -1552,3 +1552,17 @@ function checkitem() {
   }
 }
 
+
+$(".switch-btn").on("click", function () {
+    if ($(".switch-btn").hasClass("active")) {
+        $(".switch-btn").removeClass("active")
+      $(".btnBox1").removeClass("show")
+      $(".btnBox2").addClass("show")
+    } else {
+      $(".switch-btn").addClass("active")
+      $(".btnBox1").addClass("show")
+      $(".btnBox2").removeClass("show")
+
+    }
+
+})
