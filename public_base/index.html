@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .logo {
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        .tokyimg {
+            height: 100px;
+        }
+
+        .country, .version {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .country {
+            margin: 20px;
+            padding: 2px;
+            background: #eee;
+            border-radius: 7px;
+        }
+
+        .country > label {
+
+        }
+
+        .country input,
+        .version input {
+            display: none;
+            width: 0;
+        }
+
+        .country input + div {
+            width: 100px;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .country input:checked + div {
+            background: #ddd;
+        }
+
+        .country input + div > img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .version {
+            background: #eee;
+            border-radius: 12px;
+            margin-top: 16px;
+            padding: 2px;
+        }
+
+        .version input + div {
+            width: 60px;
+            height: 30px;
+            padding: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #454545;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .version input:checked + div {
+            background: #ddd;
+        }
+
+        .start {
+            margin-top: 30px;
+            background: #09f;
+            font-size: 20px;
+            color: #fff;
+            width: 200px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .start:hover {
+            background: #08e;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img class="logo" src="images/logo.png"/>
+    <div class="country">
+        <label onclick="chooseCountry('international')">
+            <input type="radio" name="country" value="international" checked="true">
+            <div>
+                <img src="images/international.png"/>
+                <div>International</div>
+            </div>
+        </label>
+        <label onclick="chooseCountry('china')">
+            <input type="radio" name="country" value="china">
+            <div>
+                <img src="images/china.png"/>
+                <div>China</div>
+            </div>
+        </label>
+    </div>
+    <a href="http://www.tokylabs.com/">
+        <img class="tokyimg" src="images/toky-img.png"/>
+    </a>
+    <div class="version">
+        <label>
+            <input type="radio" name="version" value="v2">
+            <div onclick="chooseVersion('v2')">V2</div>
+        </label>
+        <label>
+            <input type="radio" name="version" value="v3">
+            <div onclick="chooseVersion('v3')">V3</div>
+        </label>
+        <label>
+            <input type="radio" name="version" value="v5" checked="true">
+            <div onclick="chooseVersion('v5')">V5</div>
+        </label>
+    </div>
+
+    <div class="start" onclick="start()">Start</div>
+</div>
+<script>
+    var country = 'international';
+    var version = 'v2';
+
+    function getQuery () {
+        let query = window.location.search.substr(1).split('&');
+        let obj = {};
+        for (let i = 0; i < query.length; i++) {
+            let arr = query[i].split('=');
+            obj[arr[0]] = arr[1];
+        }
+        return obj;
+    }
+
+    function chooseCountry (c) {
+        country = c;
+        localStorage.setItem('country', c);
+    }
+
+    function chooseVersion (v) {
+        version = v;
+        localStorage.setItem('version', v);
+        switch (v) {
+            case 'v2' :
+                version = '';
+                break;
+            case 'v3' :
+                version = 'v3';
+                break;
+            case 'v5' :
+                version = 'v5';
+                break;
+        }
+    }
+
+    function start () {
+        var countrys = document.getElementsByName('country');
+        for (var i = 0; i < countrys.length; i++) {
+            if (countrys[i].checked) {
+                country = countrys[i].value
+                localStorage.setItem('country', country);
+                break;
+            }
+        }
+
+        var versions = document.getElementsByName('version');
+        for (var i = 0; i < versions.length; i++) {
+            if (versions[i].checked) {
+                version = versions[i].value
+                localStorage.setItem('version', version);
+                break;
+            }
+        }
+
+        var url = window.location.origin;
+        if (country === 'china') {
+            url = url.replace('.com','.cn');
+        } else {
+            url = url.replace('.cn','.com');
+        }
+        url += "/"+version;
+        localStorage.setItem('url', url);
+        window.location.href = url;
+    }
+
+    onload = function () {
+        if (getQuery().clear === "true") {
+            window.localStorage.removeItem("url");
+        }
+        var url = localStorage.getItem('url');
+        if (url) {
+            window.location.href = url;
+        } else {
+            version = localStorage.getItem('version');
+            country = localStorage.getItem('country');
+            if (version && country) {
+                var countrys = document.getElementsByName('country');
+                for (var i = 0; i < countrys.length; i++) {
+                    if (country === countrys[i].value) {
+                        countrys[i].checked = true
+                        break;
+                    }
+                }
+                var versions = document.getElementsByName('version');
+                for (var i = 0; i < versions.length; i++) {
+                    if (version === versions[i].value) {
+                        versions[i].checked = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
