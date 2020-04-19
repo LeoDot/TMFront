@@ -217,17 +217,18 @@
 
         var url = window.location.origin;
         if (country === 'china') {
-            url = url.replace('.com','.cn');
+            url = url.replace('.com', '.cn');
         } else {
-            url = url.replace('.cn','.com');
+            url = url.replace('.cn', '.com');
         }
-        url += "/"+version;
+        url += "/" + version;
         localStorage.setItem('url', url);
         window.location.href = url;
     }
 
     onload = function () {
-        if (getQuery().clear === "true") {
+        let query = getQuery()
+        if (query.clear === "true") {
             window.localStorage.removeItem("url");
         }
         var url = localStorage.getItem('url');
@@ -235,8 +236,8 @@
             window.location.href = url;
         } else {
             version = localStorage.getItem('version');
-            country = localStorage.getItem('country');
-            if (version && country) {
+            country = localStorage.getItem('country') || query.server;
+            if (country) {
                 var countrys = document.getElementsByName('country');
                 for (var i = 0; i < countrys.length; i++) {
                     if (country === countrys[i].value) {
@@ -244,6 +245,8 @@
                         break;
                     }
                 }
+            }
+            if (version) {
                 var versions = document.getElementsByName('version');
                 for (var i = 0; i < versions.length; i++) {
                     if (version === versions[i].value) {
