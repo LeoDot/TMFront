@@ -71,12 +71,10 @@ function loadSignInButton(isSignedIn) {
 
 function loadGoogleClassButton(isReady) {
   let gclassDiv = document.getElementById('googleclass');
-  console.log(gclassDiv.firstChild)
 
   while (gclassDiv.firstChild) {
     gclassDiv.removeChild(gclassDiv.firstChild);
   }
-  console.log(gclassDiv.firstChild)
 
   if (isReady) {  
     // Display button
