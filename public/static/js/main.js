@@ -811,11 +811,11 @@ function postChange(event) {
   } else {
     preIsolateEvent = null;
   }
-  
+
 
   if ((event.type == Blockly.Events.MOVE) || (event.type == Blockly.Events.DELETE) ) {
     //show JS code
-    var code; 
+    var code;
     if ( "tokymaker" == currentTarget ){
       code = Blockly.arduinoJS.workspaceToCode(workspace);
     } else {
