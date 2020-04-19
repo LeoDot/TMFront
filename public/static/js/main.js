@@ -812,11 +812,11 @@ function postChange(event) {
   } else {
     preIsolateEvent = null;
   }
-  
+
 
   if ((event.type == Blockly.Events.MOVE) || (event.type == Blockly.Events.DELETE) ) {
     //show JS code
-    var code; 
+    var code;
     if ( "tokymaker" == currentTarget ){
       code = Blockly.arduinoJS.workspaceToCode(workspace);
     } else {
@@ -1552,3 +1552,18 @@ function checkitem() {
     $(".carousel-control-next").show();
   }
 }
+
+
+$(".switch-btn").on("click", function () {
+    if ($(".switch-btn").hasClass("active")) {
+        $(".switch-btn").removeClass("active")
+      $(".btnBox1").removeClass("show")
+      $(".btnBox2").addClass("show")
+    } else {
+      $(".switch-btn").addClass("active")
+      $(".btnBox1").addClass("show")
+      $(".btnBox2").removeClass("show")
+
+    }
+
+})
