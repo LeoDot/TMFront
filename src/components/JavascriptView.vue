@@ -148,7 +148,7 @@ export default {
   }
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 550px) {
   .page {
     height: calc(100% - 78px);
     width: calc(76% + 28px);

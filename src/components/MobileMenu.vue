@@ -55,7 +55,7 @@ export default {
 .page {
   display: none;
 }
-@media all and (max-width: 750px) {
+@media all and (max-width: 550px) {
   .page {
     display: block;
     position: absolute;

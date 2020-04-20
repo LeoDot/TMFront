@@ -80,14 +80,13 @@ function loadGoogleClassButton(isReady) {
     // Display button
     let googleClassButton = document.createElement('div');
     gclassDiv.title="Save to Share to google classroom"
-    googleClassButton.class = 'item';
     googleClassButton.id = 'googleclass-button';
     gclassDiv.appendChild(googleClassButton);
     gapi.sharetoclassroom.render(
       'googleclass-button',
       {
         'url': fileLink,
-        // 'size': '32',
+        'size': '24',
         'onsharestart': () => {
           let xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
           let data = Blockly.Xml.domToText(xml);

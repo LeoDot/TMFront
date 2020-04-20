@@ -304,7 +304,7 @@ body > div {
 
 .btn-bar .item .fa {
     margin-top: 0px;
-    font-size: calc(var(--btn-bar-size) * 0.6)
+    font-size: calc(var(--btn-bar-size) * 0.7)
 }
 
 .bar-function {
@@ -595,7 +595,7 @@ body > div {
     }
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 550px) {
     .switch-btn {
         font-size: 24px;
         width: 32px;

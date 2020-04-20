@@ -124,7 +124,7 @@ li {
   }
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 550px) {
   .header {
     .menu {
       display: none;
