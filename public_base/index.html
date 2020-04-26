@@ -27,15 +27,16 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            font-size: 0.7rem;
         }
 
         .logo {
-            height: 50px;
-            margin-top: 10px;
+            height: 2.2rem;
+            margin-top: 0.44rem;
         }
 
         .tokyimg {
-            height: 100px;
+            height: 4.4rem;
         }
 
         .country, .version {
@@ -45,10 +46,10 @@
         }
 
         .country {
-            margin: 20px;
-            padding: 2px;
+            margin: 0.88rem;
+            padding: 0.088rem;
             background: #eee;
-            border-radius: 7px;
+            border-radius: 0.308rem;
         }
 
         .country > label {
@@ -62,55 +63,55 @@
         }
 
         .country input + div {
-            width: 100px;
+            width: 4.4rem;
             display: flex;
             flex-flow: column nowrap;
             justify-content: center;
             align-items: center;
-            padding: 4px;
+            padding: 0.176rem;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 0.22rem;
         }
 
         .country input:checked + div {
-            background: #ddd;
+            background: #90e5f9;
         }
 
         .country input + div > img {
-            width: 36px;
-            height: 36px;
+            width: 1.58rem;
+            height: 1.58rem;
         }
 
         .version {
             background: #eee;
-            border-radius: 12px;
-            margin-top: 16px;
-            padding: 2px;
+            border-radius: 0.5rem;
+            margin-top: 0.7rem;
+            padding: 0.088rem;
         }
 
         .version input + div {
-            width: 60px;
-            height: 30px;
-            padding: 4px;
+            width: 2.64rem;
+            height: 1.32rem;
+            padding: 0.176rem;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #454545;
-            border-radius: 10px;
+            border-radius: 0.44rem;
             cursor: pointer;
         }
 
         .version input:checked + div {
-            background: #ddd;
+            background: #90e5f9;
         }
 
         .start {
-            margin-top: 30px;
+            margin-top: 1.32rem;
             background: #09f;
-            font-size: 20px;
+            font-size: 0.88rem;
             color: #fff;
-            width: 200px;
-            height: 50px;
+            width: 8.8rem;
+            height: 2.2rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -119,6 +120,15 @@
 
         .start:hover {
             background: #08e;
+        }
+
+        .info {
+            width: 9.4rem;
+            margin-top: 0.4rem;
+            color: #888;
+            font-size: 0.7rem;
+            line-height: 1.6;
+            text-align: center;
         }
     </style>
 </head>
@@ -160,6 +170,7 @@
     </div>
 
     <div class="start" onclick="start()">Start</div>
+    <div class="info"> Version number can be found in the lower right corner of the boot screen</div>
 </div>
 <script>
     var country = 'international';
@@ -226,7 +237,19 @@
         window.location.href = url;
     }
 
+    function setupFontSize () {
+        let html = document.querySelector("html");
+        let height = window.innerHeight || window.body.clientHeight;
+        let size = (height * 12) / 300;
+        html.style.fontSize = size + "px";
+    }
+
+    window.addEventListener("resize", () => {
+        setupFontSize();
+    });
+
     onload = function () {
+        setupFontSize();
         let query = getQuery()
         if (query.clear === "true") {
             window.localStorage.removeItem("url");
