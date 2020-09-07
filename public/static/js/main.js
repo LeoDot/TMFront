@@ -634,7 +634,7 @@ function upload() {
     // console.log("Id of compiled code " + hexa);
     try {
       var request = new XMLHttpRequest();
-      request.open("GET", "/getHex/" + hexa, true);
+      request.open("GET", "/getHex/?hexa=" + hexa, true);
       request.responseType = "arraybuffer";
 
       request.onload = function() {

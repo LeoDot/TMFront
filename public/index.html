@@ -6,7 +6,7 @@
       var isEnglish = urlHost.indexOf(".com") > 0;
     </script>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tokylabs</title>
     <link rel="icon" type="image/png" href="static/media/favicon.png"/>
 
@@ -38,7 +38,7 @@
     <script src="static/js/arduino_compressed.js"></script>
     <script src="static/js/arduinoJS_compressed.js"></script>
     <script src="static/js/javascript_compressed.js"></script>
-    <script src="static/js/custom_blocks_ar.js"></script>
+
     <script src="static/js/en.js"></script>
 
     <script type="text/javascript" src="static/js/FileSaver.min.js"></script>
@@ -657,324 +657,338 @@
 </xml>
 
 <xml id="arToolbox" style="display: none">
-    <category name="AR" colour=120 icon="fa-eye">
-        <block type="ar_text_create"></block>
-        <block type="ar_text_update"></block>
-        <block type="ar_graph_create"></block>
-        <block type="ar_graph_update"></block>
-        <block type="ar_model_create"></block>
-        <block type="ar_model_update"></block>
-        <block type="ar_scale_set"></block>
-        <block type="ar_rotation_set"></block>
-        <block type="ar_position_set"></block>
-        <block type="ar_remove"></block>
+    <category name="Control" colour=120 icon="fa-arrows" >     
+      <block type="async_loop">
+        <value name="delay">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>       
+      </block>
+      
+      <block type="controls_if"></block>  
+
+      <block type="break"></block>
+
+
+      <!-- <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+
+      <block type="controls_whileUntil">
+        <value name="BOOL">
+          <shadow type="logic_compare">
+            <field name="OP">LT</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="repeat_counter"></block> -->
+
+      <block type="controls_forEach"></block>
+
     </category>
-    <category name="Text" colour="160" icon="fa-font">
-        <block type="text"></block>
-        <block type="text_join">
-            <value name="label">
-                <block type="text"></block>
-            </value>
-            <value name="label">
-                <block type="text"></block>
-            </value>
+
+
+    <category name="AR" colour=305 icon="fa-eye">
+      <block type="ar_text_update">
+        <value name="ID">
+            <shadow type="text">
+              <field name="TEXT">ID</field>
+            </shadow>
+        </value>
+        <value name="STRING">
+          <shadow type="text">
+            <field name="TEXT">TokyMaker</field>
+          </shadow>
+        </value>
+      </block>
+
+      <block type="ar_sphere_update">
+        <value name="ID">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="radius">
+          <shadow type="math_number" id="#DKR7M;X4@KdCJxykyXo">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+
+      <block type="ar_box_update">
+        <value name="ID">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="x">
+          <shadow type="math_number" id="KafTG9]tq/*@KN%tsCL`">
+            <field name="NUM">6</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number" id="Laq,5]Iba_xS34?/vU#)">
+            <field name="NUM">6</field>
+          </shadow>
+        </value>
+        <value name="z">
+          <shadow type="math_number" id="4%yP:I0^+v;(hHx8YN]N">
+            <field name="NUM">6</field>
+          </shadow>
+        </value>
+      </block>
+
+      <block type="ar_graph_update">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value>        
+      </block>
+
+      <block type="ar_model_update">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value> 
+      </block>
+      
+      <block type="ar_set_color">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value>
+        <value name="color">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+      </block>
+
+      <block type="ar_scale_3">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value>
+        <value name="xSize">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="ySize">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="zSize">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>        
+      </block>
+
+      <block type="ar_rotation_3">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value>
+        <value name="x">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+        <value name="z">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>         
+      </block>
+
+      <block type="ar_position_3">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value>
+        <value name="x">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="z">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>         
+      </block>
+
+      <block type="ar_showhide">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT">ID</field>
+          </shadow>
+        </value>        
+      </block>
+
+      <!-- <block type="ar_showhide_axes">        -->
+      </block>      
+
+
+  </category>
+
+
+  <category name="Colour" colour="20" icon="fa-paint-brush">
+    <block type="colour_picker"></block>
+    <block type="colour_random"></block>
+    <block type="colour_rgb">
+        <value name="RED">
+            <shadow type="math_number">
+                <field name="NUM">100</field>
+            </shadow>
+        </value>
+        <value name="GREEN">
+            <shadow type="math_number">
+                <field name="NUM">50</field>
+            </shadow>
+        </value>
+        <value name="BLUE">
+            <shadow type="math_number">
+                <field name="NUM">0</field>
+            </shadow>
+        </value>
+    </block>
+
+ </category>
+
+  <category name="Number" colour="230" icon="fa-calculator">
+    <block type="math_number"></block>
+    <block type="math_constant"></block>
+
+    <block type="math_round"></block>
+
+    <block type="math_arithmetic"></block>
+    <block type="math_single"></block>
+    <block type="random">
+      <value name="high">
+        <block type="math_number">
+          <field name="NUM">100</field>
         </block>
-    </category>
-    <category name="IOT" colour="180" icon="fa-cloud">
-        <block type="iot_feed"></block>
-    </category>
-    <category name="Logic" colour="210" icon="fa-random">
-        <block type="controls_if"></block>
-        <block type="logic_compare"></block>
-        <block type="logic_operation"></block>
-        <block type="logic_negate"></block>
-        <block type="logic_boolean"></block>
-        <block type="logic_null"></block>
-        <block type="logic_ternary"></block>
-    </category>
-    <category name="Loops" colour="120" icon="fa-circle-o-notch">
-        <block type="async_loop"></block>
-        <block type="controls_repeat_ext">
-            <value name="TIMES">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
+      </value>       
+    </block>
+    <block type="math_map"></block>
+    <block type="math_on_list"></block>
+
+    <block type="matrix_set_all"></block>        
+    <block type="matrix_set_one"> 
+      <value name="row">
+        <block type="math_number">
+          <field name="NUM">1</field> 
         </block>
-        <block type="controls_whileUntil"></block>
-        <block type="controls_for">
-            <value name="FROM">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="TO">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-            <value name="BY">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
+      </value> 
+      <value name="col">
+        <block type="math_number">
+          <field name="NUM">1</field> 
         </block>
-        <block type="controls_forEach"></block>
-        <block type="controls_flow_statements"></block>
-    </category>
-    <category name="Math" colour="230" icon="fa-calculator">
+      </value>                      
+      <value name="data">
         <block type="math_number"></block>
-        <block type="math_arithmetic">
-            <value name="A">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="B">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
+      </value>  
+    </block>
+    <block type="matrix_get">         
+      <value name="row">
+        <block type="math_number">
+          <field name="NUM">1</field> 
         </block>
-        <block type="math_single">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">9</field>
-                </shadow>
-            </value>
+      </value> 
+      <value name="col">
+        <block type="math_number">
+          <field name="NUM">1</field> 
         </block>
-        <block type="math_trig">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">45</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_constant"></block>
-        <block type="math_number_property">
-            <value name="NUMBER_TO_CHECK">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_round">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">3.1</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_on_list"></block>
-        <block type="math_modulo">
-            <value name="DIVIDEND">
-                <shadow type="math_number">
-                    <field name="NUM">64</field>
-                </shadow>
-            </value>
-            <value name="DIVISOR">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_constrain">
-            <value name="VALUE">
-                <shadow type="math_number">
-                    <field name="NUM">50</field>
-                </shadow>
-            </value>
-            <value name="LOW">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="HIGH">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_random_int">
-            <value name="FROM">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="TO">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_random_float"></block>
-    </category>
-    <category name="Text" colour="160" icon="fa-font">
-        <block type="text"></block>
-        <block type="text_join"></block>
-        <block type="text_append">
-            <value name="TEXT">
-                <shadow type="text"></shadow>
-            </value>
-        </block>
-        <block type="text_length">
-            <value name="VALUE">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_isEmpty">
-            <value name="VALUE">
-                <shadow type="text">
-                    <field name="TEXT"></field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_indexOf">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">text</field>
-                </block>
-            </value>
-            <value name="FIND">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_charAt">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">text</field>
-                </block>
-            </value>
-        </block>
-        <block type="text_getSubstring">
-            <value name="STRING">
-                <block type="variables_get">
-                    <field name="VAR">text</field>
-                </block>
-            </value>
-        </block>
-        <block type="text_changeCase">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_trim">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_print">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_prompt_ext">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-    </category>
-    <category name="Lists" colour="260" icon="fa-sort-amount-desc">
-        <block type="lists_create_with">
-            <mutation items="0"></mutation>
-        </block>
-        <block type="lists_create_with"></block>
-        <block type="lists_repeat">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">5</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="lists_length"></block>
-        <block type="lists_isEmpty"></block>
-        <block type="lists_indexOf">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">list</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_getIndex">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">list</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_setIndex">
-            <value name="LIST">
-                <block type="variables_get">
-                    <field name="VAR">list</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_getSublist">
-            <value name="LIST">
-                <block type="variables_get">
-                    <field name="VAR">list</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_split">
-            <value name="DELIM">
-                <shadow type="text">
-                    <field name="TEXT">,</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="lists_sort"></block>
-    </category>
-    <category name="Colour" colour="20" icon="fa-paint-brush">
-        <block type="colour_picker"></block>
-        <block type="colour_random"></block>
-        <block type="colour_rgb">
-            <value name="RED">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-            <value name="GREEN">
-                <shadow type="math_number">
-                    <field name="NUM">50</field>
-                </shadow>
-            </value>
-            <value name="BLUE">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="colour_blend">
-            <value name="COLOUR1">
-                <shadow type="colour_picker">
-                    <field name="COLOUR">#ff0000</field>
-                </shadow>
-            </value>
-            <value name="COLOUR2">
-                <shadow type="colour_picker">
-                    <field name="COLOUR">#3333ff</field>
-                </shadow>
-            </value>
-            <value name="RATIO">
-                <shadow type="math_number">
-                    <field name="NUM">0.5</field>
-                </shadow>
-            </value>
-        </block>
-    </category>
+      </value>   
+    </block>
+
+  </category>
+
+  <category name="Lists" colour="260" icon="fa-sort-amount-desc">
+    <block type="lists_create_with">
+      <mutation items="3"></mutation>
+    </block>
+    <block type="lists_getIndex"></block>
+    <block type="lists_setIndex"></block>
+    <block type="lists_length"></block>
+
+  </category>
+
+  <category name="Logic" colour="210" icon="fa-random">
+    <block type="logic_boolean"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_negate"></block>
+  </category>
+
+  <category name="Text" colour="160" icon="fa-font">
+    <block type="text"></block>
+    <block type="text_join" inline="false">
+      <mutation items="2"> </mutation>
+        <value name="ADD0">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="ADD1">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>              
+    </block>
+
+    <block type="text_append">
+      <value name="TEXT">
+          <shadow type="text"></shadow>
+      </value>
+    </block>
+    <block type="text_length">
+      <value name="VALUE">
+          <shadow type="text">
+              <field name="TEXT">abc</field>
+          </shadow>
+      </value>
+    </block>
+
+  </category>
+
+  <category name="Variable" colour="330" custom="VARIABLE" icon="fa-bars">
+  </category>
+
+  <category name="IOT" colour="180" icon="fa-cloud" >
+      <block type="ar_iotplatform_login"></block>
+      <block type="ar_iotplatform_publish">        
+        <value name="data">
+          <shadow type="math_number"></shadow>
+        </value>  
+      </block>
+      <block type="ar_iotplatform_getdata"></block>
+
+  </category>
     <!--<sep></sep>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Functions" colour="290" custom="PROCEDURE"></category>

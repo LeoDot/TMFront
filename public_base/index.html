@@ -17,16 +17,13 @@
             margin: 0;
             padding: 0;
             font-size: 16px;
-            width: 100%;
-            height: 100%;
         }
 
         .container {
             display: flex;
             flex-flow: column nowrap;
             align-items: center;
-            justify-content: center;
-            height: 100%;
+            justify-content: flex-start;
             font-size: 0.7rem;
         }
 
@@ -116,6 +113,7 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            border-radius: 0rem;
         }
 
         .start:hover {
@@ -239,8 +237,8 @@
 
     function setupFontSize () {
         let html = document.querySelector("html");
-        let height = window.innerHeight || window.body.clientHeight;
-        let size = (height * 12) / 300;
+        let width = window.innerWidth || window.body.clientWidth;
+        let size = (width * 8) / 300;
         html.style.fontSize = size + "px";
     }
 

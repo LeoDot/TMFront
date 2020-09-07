@@ -5,10 +5,11 @@ const wrapFront = `
 
 <head>
   <title>Tokylabs AR</title>
-  <script src="static/js/aframe.min.js"></script>
-  <script src="static/js/aframe-ar.js"></script>
-  <script src="static/js/ar-frontend.js"></script>
-  <script src="static/js/d3.v5.min.js"></script>
+  <link rel="icon" type="image/png" href="../static/media/favicon.png"/>
+  <script src="../static/js/aframe.min.js"></script>
+  <script src="../static/js/aframe-ar.js"></script>
+  <script src="../static/js/ar-frontend.js"></script>
+  <script src="../static/js/d3.v5.min.js"></script>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -16,7 +17,7 @@ const wrapFront = `
   <a-scene id="ar" embedded arjs='debugUIEnabled: false;' antialias="true">
     <a-assets>
     </a-assets>
-    <a-marker-camera type='pattern' url='static/media/toky-marker.patt'></a-marker-camera>
+    <a-marker-camera type='pattern' url='../static/media/toky-marker.patt'></a-marker-camera>
   </a-scene>
   <div style="position: fixed; left: 0%; bottom: 10px; width:100%; text-align: center; z-index: 1;color: grey;">
     <div style="color: rgba(0, 0, 0, 0.9); background-color: rgba(127, 127, 127, 0.5); display: inline-block; padding: 0.5em; margin: 0.5em; text-align: left;">
@@ -75,10 +76,9 @@ async function uploadAR(){
   let fileName = await getFileName();
   await createFile(`${fileName}_experience`, file, folderId, 'html');
 
-  let codeFlag = 'ar' //it must be same with the one in the index.js
 
   if (arFileID) {
-    let qrcode = `${window.location.href}/${codeFlag}_${arFileID}`;
+    let qrcode = `${window.location.href}Ar/?id=${arFileID}`;
     let url = await QRCode.toDataURL(qrcode)
     ARCode = await combineImages(url, "static/media/toky-marker.jpg");
     imgFile = dataURItoBlob(ARCode);
