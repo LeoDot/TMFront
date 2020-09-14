@@ -1,0 +1,11 @@
+A-Frame Version: 0.6.0 (Date 30-06-2017, Commit #34d1988)
+aframe.min.js:389 three Version: ^0.84.0
+aframe.min.js:389 WebVR Polyfill Version: ^0.9.35
+aframe.min.js:100 THREE.WebGLRenderer 84
+aframe-ar.js:7137 AR.js 1.7.1 - trackingBackend: artoolkit
+aframe-ar.js:6597 ARjs.Anchor - changeMatrixMode: cameraTransformMatrix / markersAreaEnabled: false
+aframe-ar.js:4805 THREEx.ArMarkerControls: 'markersAreaEnabled' is not a property of this material.
+setParameters @ aframe-ar.js:4805
+aframe-ar.js:2 Allocated videoFrameSize 1228800
+aframe-ar.js:2 Pattern detection mode set to 1.
+aframe-ar.js:2 Pattern ratio size set to 0.500000.

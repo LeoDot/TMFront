@@ -6,18 +6,21 @@ const wrapFront = `
 <head>
   <title>Tokylabs AR</title>
   <link rel="icon" type="image/png" href="../static/media/favicon.png"/>
-  <script src="../static/js/aframe.min.js"></script>
-  <script src="../static/js/aframe-ar.js"></script>
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="../static/js/ar-frontend.js"></script>
   <script src="../static/js/d3.v5.min.js"></script>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
   <div class="page-head"></div>
-  <a-scene id="ar" embedded arjs='debugUIEnabled: false;' antialias="true">
+  <a-scene id="ar" embedded arjs='debugUIEnabled: true;' renderer="antialias: true">
     <a-assets>
     </a-assets>
-    <a-marker-camera type='pattern' url='../static/media/toky-marker.patt'></a-marker-camera>
+    <a-camera position="0 1.6 5" ></a-camera>
+    <a-marker-camera type='pattern' url='../static/media/toky-marker.patt'  smooth='true'>    
+    </a-marker-camera>
+    
   </a-scene>
   <div style="position: fixed; left: 0%; bottom: 10px; width:100%; text-align: center; z-index: 1;color: grey;">
     <div style="color: rgba(0, 0, 0, 0.9); background-color: rgba(127, 127, 127, 0.5); display: inline-block; padding: 0.5em; margin: 0.5em; text-align: left;">

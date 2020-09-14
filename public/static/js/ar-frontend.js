@@ -1,6 +1,7 @@
 //Creating a Multi-Marker Augmented Reality Application: https://connected-environments.org/making/ar-playing-cards/
 //learn: https://blog.theodo.com/2018/09/build-first-ar-web-app-less-10mn/
 // https://aframe.io/
+// Creating a Multi-Marker Augmented Reality Application: https://connected-environments.org/making/ar-playing-cards/
 const dataRefreshInterval = 5000; // ms
 const imageWidth = 512;
 const imageHeight = 512;
@@ -15,29 +16,34 @@ const accentColor = '#1ec971';
 
 let imageToggle = 1;
 
-// function setupAxis() {
-//   var axesHelper = new THREE.( 500 );
+function setupAxis(id) {
+  if (!document.querySelector(`#${id}`)){
+    const ardoc = document.querySelector('#ar');
+    ardoc.insertAdjacentHTML('beforeend', `
+    <a-entity id="${id}" rotation="-90 0 0"  visible="true">
+      <a-text value="View at(0m,1.6m,5m)" position="-1 1.5 0" rotation="0 0 0" height="1.5" color="purple"></a-text>
 
-//   // AFRAME.registerComponent('do-something', {
-//   //   init: function () {
-//   //     var sceneEl = this.el;
-//   //   }
-//   // });
-//   var Scene = document.querySelector('a-scene').object3D;
-  
-
-//   const ardoc = document.querySelector('#ar');
-//   ardoc.insertAdjacentElement(,);
-//   ardoc.insertAdjacentHTML(,axesHelper)
-//   ardoc.insertAdjacentElement(axesHelper.createElement());
-
-// }
+      <a-cylinder position="0 0.5 0" radius="0.04" rotation="0 0 0"  height="1" color="green"></a-cylinder>
+      <a-cone position="0 1.05 0" radius-bottom="0.08" radius-top="0" height="0.1" color="green" ></a-cone>
+      <a-text value="Y" position="0 1.2 0"  height="2" color="green"></a-text>
+      <a-cylinder position="0.5 0 0" radius="0.04" rotation="0 0 90"  height="1" color="red"></a-cylinder>
+      <a-cone color="red" position="1.05 0 0" rotation="0 0 -90" radius-bottom="0.08" radius-top="0" height="0.1"></a-cone>
+      <a-text value="X" position="1.2 0 0"  height="2" color="red"></a-text>
+      <a-cylinder position="0 0 0.5" radius="0.04" rotation="90 0 0"  height="1" color="blue"></a-cylinder>
+      <a-cone  position="0 0 1.05" rotation="90 0 0" radius-bottom="0.08" radius-top="0" height="0.1" color="blue"></a-cone>
+      <a-torus position="0 0 0.5"  rotation="0 0 135"  arc="90" radius="0.5" radius-tubular="0.01" color="blue"></a-torus>
+      <a-cone  position="-0.35 -0.35 0.5" rotation="0 0 225" radius-bottom="0.05" radius-top="0" height="0.1" color="blue"></a-cone>
+      <a-text value="Z" position="0.1 0 1.2"  height="2" color="blue"></a-text>
+    </a-entity>
+    `);
+  }
+}
 
 function setupSphere(id) {
   if (!document.querySelector(`#${id}`)){
     const ardoc = document.querySelector('#ar');
     ardoc.insertAdjacentHTML('beforeend', `
-      <a-sphere id="${id}" position="0 0 -6" radius="0.5"  color="${accentColor}"></a-sphere>
+      <a-sphere id="${id}" position="0 0 0" rotation="-90 0 0" radius="0.5" material="transparent: true; opacity: 0.9;" color="${accentColor}"></a-sphere>
     `);
   }
 }
@@ -71,7 +77,7 @@ function setupBox(id) {
   if (!document.querySelector(`#${id}`)){
     const ardoc = document.querySelector('#ar');
     ardoc.insertAdjacentHTML('beforeend', `
-      <a-box id="${id}" position="0 0 -7" rotation="0 45 0" color="${accentColor}"></a-box>
+      <a-box id="${id}" position="0 0 0" rotation="-90 0 0" material="transparent: true; opacity: 0.1;" color="${accentColor}"></a-box>
     `);
   }
 }
@@ -111,7 +117,7 @@ function setupText(id) {
   if (!document.querySelector(`#${id}`)) {
     const ardoc = document.querySelector('#ar');
     ardoc.insertAdjacentHTML('beforeend',`
-     <a-text id="${id}" value="NULL"  position="0 0 -5" rotation="-90 0 0" baseline="bottom" align="center" width="5" color="${accentColor}"></a-text>
+     <a-text id="${id}" value="NULL"  position="0 0 0" rotation="-90 0 0"  opacity="0.8" baseline="bottom" align="center" width="5" color="${accentColor}"></a-text>
     `);
   }
 }
@@ -119,7 +125,16 @@ function setupText(id) {
 async function updateText(id, text) {
   const element = document.getElementById(`${id}`);
   if (element) {
-    element.setAttribute('value', `${text}`);
+    if (Number(text)){
+      content = '${text}';
+    }
+    else{
+      content = text;
+    }
+
+    console.log(content);  //传入变量 D=[object Promise]
+
+    element.setAttribute('value', content);
   }
 }
 
@@ -186,20 +201,26 @@ async function iotGetData(feed){
 }
 
 async function iotPublish(feed, value){
-  const body = new FormData;
-  body.append("value", `${value}`);
+  let dataRaw = null;
+
+  console.log(value);
+
+  var adaUrl = `https://io.adafruit.com/api/v2/${adaIO_user}/feeds/${feed}/data`
+  var para = {
+    body:`{"value": ${value}}`,
+    headers: {
+      "Content-Type": "application/json",
+      "X-AIO-Key": `${adaIO_key}`
+    },
+    method: "POST"
+  };
 
   try {
-    dataRaw = await fetch(`https://io.adafruit.com/api/v2/${adaIO_user}/feeds/${feed}/data`, {
-      body,
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "X-AIO-Key": `${adaIO_key}`
-      }
-    });
+    dataRaw = await fetch(adaUrl, para);
+
 
   } catch (err) {
-    throw new Error('Failed to publish feed');
+    console.log(err)
   }  
 }
 
@@ -221,11 +242,17 @@ async function lineChart(id, feed, title, xLable, yLable) {
 
   const dataset = [];
   let uri = `https://io.adafruit.com/api/v2/${adaIO_user}/feeds/${feed}/data?limit=10`;
+  let para = {
+    headers: {
+      "X-AIO-Key": `${adaIO_key}`
+    }
+  };
+
   let dataRaw = null;
   let data = null;
 
   try {
-    dataRaw = await fetch(uri);
+    dataRaw = await fetch(uri, para);
     data = await dataRaw.json();
   } catch (err) {
     throw new Error('Failed to fetch feed, please check user and feed name are correct.');
@@ -412,7 +439,7 @@ function setup3DModel(id) {
     const arDoc = document.querySelector('#ar');
     const arAssets = document.querySelector('a-assets');
     
-    arDoc.insertAdjacentHTML('beforeend', `<a-entity id="${id}" obj-model="" scale="0.01 0.01 0.01" position="0 0.2 -0.5" rotation="90 0 0"></a-entity>`);
+    arDoc.insertAdjacentHTML('beforeend', `<a-entity id="${id}" obj-model="" scale="0.01 0.01 0.01" position="0 0.2 -0.5" rotation="-90 0 0" material="transparent: true; opacity: 0.9;" ></a-entity>`);
     arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-obj" src="">`);
     arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-mtl" src="">`);
   }
@@ -451,6 +478,7 @@ async function arScaleSet(id, x, y, z) {
 async function arRotationSet(id, x, y, z) {
   const element = document.getElementById(id);
   if (element) {
+    x -= 90;
     element.object3D.rotation.set(
       THREE.Math.degToRad(x),
       THREE.Math.degToRad(y),
@@ -477,21 +505,38 @@ async function arPositionSet(id, x, y, z) {
 async function arColorSet(id, color){
   const element = document.getElementById(id);
   if (element) {
+    //element.object3D.material.color.set(color);
     element.setAttribute('color', `${color}`);
+  }
+}
+
+async function arOpacitySet(id, opacity){
+  const element = document.getElementById(id);
+  if (element) {
+    var type = id.substring(0,1);
+    opacity /= 100.0;
+    // element.object3D.material.opacity.set(opacity/100);
+    if (type == 'T'){
+      element.setAttribute('opacity', `${opacity}`);
+    }
+    else{
+      element.setAttribute('material', 'opacity',`${opacity}`);
+
+    }
   }
 }
 
 async function arShow(id) {
   const element = document.getElementById(id);
   if (element) {
-    element.setAttribute('visible', true);
+    element.object3D.visible = true;
   }
 }
 
 async function arHide(id) {
   const element = document.getElementById(id);
   if (element) {
-    element.setAttribute('visible', false);
+    element.object3D.visible = false;
   }
 }
 

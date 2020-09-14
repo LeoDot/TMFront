@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../blockly"
+		},
+		{
+			"path": "../../aframe-boilerplate-master"
 		}
 	]
 }
