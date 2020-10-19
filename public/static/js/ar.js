@@ -6,7 +6,7 @@ const wrapFront = `
 <head>
   <title>Tokylabs AR</title>
   <link rel="icon" type="image/png" href="../static/media/favicon.png"/>
-  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="../static/js/ar-frontend.js"></script>
   <script src="../static/js/d3.v5.min.js"></script>
@@ -14,12 +14,15 @@ const wrapFront = `
 
 <body style='margin : 0px; overflow: hidden;'>
   <div class="page-head"></div>
-  <a-scene id="ar" embedded arjs='debugUIEnabled: true;' renderer="antialias: true">
+  <a-scene id="sys" embedded arjs='debugUIEnabled: true;' renderer="antialias: true">
     <a-assets>
     </a-assets>
-    <a-camera position="0 1.6 5" ></a-camera>
-    <a-marker-camera type='pattern' url='../static/media/toky-marker.patt'  smooth='true'>    
-    </a-marker-camera>
+
+    <a-entity camera look-controls position="0 1.6 5">
+      <a-marker id="ar" type="pattern" url='../static/media/toky-marker.patt' emitevents='true' smooth='true'>
+
+      </a-marker>
+    </a-entity>
     
   </a-scene>
   <div style="position: fixed; left: 0%; bottom: 10px; width:100%; text-align: center; z-index: 1;color: grey;">
@@ -30,6 +33,15 @@ const wrapFront = `
     </div>
   </div>
   <script>
+    var m = document.querySelector("a-marker")
+    m.addEventListener("markerFound", (e)=>{
+      console.log("Marker found")
+    })
+
+    m.addEventListener("markerLost", (e)=>{
+      console.log("Marker lost")
+    })
+    
     async function AR() {
 `;
 

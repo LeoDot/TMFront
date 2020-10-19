@@ -58,20 +58,6 @@ function updateSphere(id, radius) {
 }
 
 
-// function updateSphere(id, radius) {
-//   const element = document.getElementById(`${id}`);
-
-//   if (!element){
-//     const ardoc = document.querySelector('#ar');
-//     ardoc.insertAdjacentHTML('beforeend', `
-//       <a-sphere id="${id}" position="0 0 -5" radius="${radius}" color="${accentColor}"></a-sphere>
-//     `);
-
-//   }
-
-//   element.setAttribute('radius', `${radius}`);
-// }
-
 
 function setupBox(id) {
   if (!document.querySelector(`#${id}`)){
@@ -125,14 +111,15 @@ function setupText(id) {
 async function updateText(id, text) {
   const element = document.getElementById(`${id}`);
   if (element) {
+    var content;
     if (Number(text)){
-      content = '${text}';
+      content = `${text}`;
     }
     else{
       content = text;
     }
 
-    console.log(content);  //传入变量 D=[object Promise]
+    // console.log(content);  //传入变量 D=[object Promise]
 
     element.setAttribute('value', content);
   }
@@ -433,58 +420,81 @@ async function updateGraph(id, feed, title, xLable, yLable) {
   }
 }
 
+/* 
+<a-assets>
+  <a-asset-item id="cityModel" src="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"></a-asset-item>
+</a-assets>
+<a-entity gltf-model="#cityModel" modify-materials></a-entity> 
+*/
+
+const ModelScale = 0.01
 
 function setup3DModel(id) {
-  if (!document.querySelector(id)) {
+  if (!document.querySelector(`#${id}`)){
     const arDoc = document.querySelector('#ar');
     const arAssets = document.querySelector('a-assets');
     
-    arDoc.insertAdjacentHTML('beforeend', `<a-entity id="${id}" obj-model="" scale="0.01 0.01 0.01" position="0 0.2 -0.5" rotation="-90 0 0" material="transparent: true; opacity: 0.9;" ></a-entity>`);
-    arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-obj" src="">`);
-    arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-mtl" src="">`);
+    arDoc.insertAdjacentHTML('beforeend', `<a-entity id="${id}" gltf-model="" position="0 0 0" rotation="0 0 0" scale="${ModelScale} ${ModelScale} ${ModelScale}"   material="transparent: true; opacity: 0.9; color="${accentColor}" ></a-entity>`);
+    arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-gltf" src="">`);
   }
 }
 
-function load3DModel(id, obj, mtl) {
-  if (!obj) {
+function load3DModel(id, objData) {
+  if (!objData) {
     setupText('Missing 3D files');
     return;
   }
 
-    const arAssets = document.querySelector('a-assets');
-    var models = "";
+  var element = document.getElementById(`${id}-gltf`);
+  if (element) {
+    element.setAttribute('src', objData);
+  }  
+  else{
+    console.log("no assert!")
+    return;
+  }
 
-    arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-obj" src="`+obj+`">`);
-    const entityOBJ = document.querySelector(`#${id}-obj`);
-    entityOBJ.setAttribute('src', obj);
-    models = models + `obj: #${id}-obj;`;
-    if (mtl && mtl != "null"){
-      const entityMTL = document.querySelector(`#${id}-mtl`);
-      entityMTL.setAttribute('src', mtl);
-      models = models + ` mtl: #${id}-mtl;`;
-    }
-    const entity = document.querySelector(`#${id}`);
-    entity.setAttribute('obj-model', models);
+  element = document.getElementById(`${id}`);
+  if (element) {
+    element.setAttribute('gltf-model', `#${id}-gltf`);
+  }
+
 }
-
 
 async function arScaleSet(id, x, y, z) {
   const element = document.getElementById(id);
   if (element) {
-    element.object3D.scale.set(x/100, y/100, z/100);
+    var type = id.substring(0,1);
+    var baseScale;
+    if (type == 'D'){
+      baseScale = ModelScale;
+    }
+    else{
+      baseScale = 1;
+    }
+    element.object3D.scale.set(x/100*baseScale, y/100*baseScale, z/100*baseScale);
   }
+
 }
 
-async function arRotationSet(id, x, y, z) {
+
+
+async function arRotationSet(id, angleX, angleY, angleZ) {
   const element = document.getElementById(id);
   if (element) {
-    x -= 90;
+    var type = id.substring(0,1);
+    var baseScale;
+    if (type == 'D'){
+    }
+    else{
+      angleX -= 90;
+    }
+
     element.object3D.rotation.set(
-      THREE.Math.degToRad(x),
-      THREE.Math.degToRad(y),
-      THREE.Math.degToRad(z)
+      THREE.Math.degToRad(angleX),
+      THREE.Math.degToRad(angleY),
+      THREE.Math.degToRad(angleZ)
     );
-    element.object3D.rotation.x += Math.PI;
   }
 }
 
@@ -498,7 +508,7 @@ async function arRotationSet(id, x, y, z) {
 async function arPositionSet(id, x, y, z) {
   const element = document.getElementById(id);
   if (element) {
-    element.object3D.position.set(x, y, z);
+    element.object3D.position.set(x, z, -y);
   }
 }
 
