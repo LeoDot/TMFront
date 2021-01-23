@@ -1353,8 +1353,12 @@ function showTab(evt) {
 
 /////////////////////////
 function isChrome(evt) {
+  var inBrowser = typeof window !== 'undefined';
+  var UA = inBrowser && window.navigator.userAgent.toLowerCase();
+  var isEdge = UA && UA.indexOf('edge/') > 0;
   // IsChrome
-  var isChromium = window.chrome;
+  // var isChromium = window.chrome;
+  var isChromium = UA && /chrome\/\d+/.test(UA) && !isEdge;
   var winNav = window.navigator;
   var vendorName = winNav.vendor;
   var isOpera = typeof window.opr !== "undefined";
