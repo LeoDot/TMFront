@@ -11,7 +11,7 @@ var blocklyDiv = document.getElementById("blocklyDiv");
 
 var runButton = document.getElementById("runButton");
 var arButton = document.getElementById("arButton");
-var arCodeButton = document.getElementById("arCodeButton");
+
 
 var tokymakerToolbox = document.getElementById("tokymakerToolbox");
 var arToolbox = document.getElementById("arToolbox");
@@ -95,15 +95,6 @@ function highlightBlock(id) {
   highlightPause = true;
 }
 
-function resetStepUi(clearOutput) {
-  workspace.highlightBlock(null);
-  highlightPause = false;
-  runButton.disabled = "";
-
-  if (clearOutput) {
-      window.consoleView.setMsg('Console');
-  }
-}
 
 var currentTarget = "tokymaker";
 /**
@@ -132,12 +123,14 @@ function restore_blocks() {
 /**
  * Save Arduino generated code to local file.
  */
+
 function saveCode() {
   var fileName = vex.dialog.prompt({
     message: "What would you like to name your file?",
-    placeholder: "Tokymaker Project",
-    callback: function(filename) {
+    placeholder: `${codeFileName}`,
+    callback: function(fileName) {
       if (fileName) {
+        codeFileName = fileName;
         var blob = new Blob([Blockly.Arduino.workspaceToCode()], {
           type: "text/plain;charset=utf-8"
         });
@@ -198,6 +191,29 @@ function loadLocal(event) {
   reader.readAsText(files[0]);
 }
 
+function uploadFile (blob, filename, cb) {
+  var formData = new FormData()
+  formData.append('file', blob, filename)
+  $.ajax({
+    url: "/upload",
+    type: "POST",
+    data: formData,
+    processData: false,  // 不处理数据
+    contentType: false, // 不设置内容类型
+    success: cb
+  });
+}
+
+function downloadData (url, filename) {
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', filename);
+  link.click();
+}
+
+
+var  codeFileName = "Tokymaker";
+
 /**
  * Save blocks to local file.
  * better include Blob and FileSaver for browser compatibility
@@ -208,15 +224,23 @@ function saveLocal() {
 
   vex.dialog.prompt({
     message: "What would you like to name your file?",
-    placeholder: "Tokymaker Project",
+    placeholder: `${codeFileName}`,
     callback: function(fileName) {
       if (fileName) {
+        codeFileName = fileName;
         var blob = new Blob([data], { type: "text/xml" });
-        saveAs(blob, fileName + ".xml");
+        if (bleVue.$data.isiOS) {
+            uploadFile(blob, fileName + ".xml", function (res) {
+              downloadData( res.data.url )
+            })
+        } else {
+          saveAs(blob, fileName + ".xml");
+        }
       }
     }
   });
 }
+
 
 function saveFile() {
   if (isEnglish) {
@@ -593,7 +617,6 @@ function makeBleFrame(command, data) {
   return new Uint8Array(FrameBuffer);
 }
 
-var runBtnClass = document.querySelector("#runButton i");
 
 /**getcode and send**/
 var BLE_sendIndex;
@@ -625,8 +648,7 @@ function upload() {
   }
 
   window.isUploading = true;
-
-    window.consoleView.setMsg("Compiling...");
+  window.consoleView.setMsg("Compiling...");
 
   // sendToBluetoothDevice();
   // ref:  https://segmentfault.com/a/1190000004322487
@@ -1257,7 +1279,7 @@ function switchTarget(target) {
   bleButton.style.display = "none";
   runButton.style.display = "none";
   arButton.style.display = "none";
-  arCodeButton.style.display = "none";
+
 
   window.setJs("");
 
@@ -1271,7 +1293,7 @@ function switchTarget(target) {
       break;
     case "ar":
       arButton.style.display = "";
-      arCodeButton.style.display = "";
+
       window.consoleView.disable();
       workspace.updateToolbox(arToolbox);
       break;

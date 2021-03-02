@@ -5,11 +5,11 @@ const wrapFront = `
 
 <head>
   <title>Tokylabs AR</title>
-  <link rel="icon" type="image/png" href="../static/media/favicon.png"/>
-  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="../static/js/ar-frontend.js"></script>
-  <script src="../static/js/d3.v5.min.js"></script>
+  <link rel="icon" type="image/png" href="/v5/static/media/favicon.png"/>
+  <script src="/v5/static/js/aframe.min.js"></script>
+  <script src="/v5/static/js/aframe-ar.js"></script>
+  <script src="/v5/static/js/ar-frontend.js"></script>
+  <script src="/v5/static/js/d3.v5.min.js"></script>
 </head>
 
 <body style='margin : 0px; overflow: hidden;'>
@@ -19,7 +19,7 @@ const wrapFront = `
     </a-assets>
 
     <a-entity camera look-controls position="0 1.6 5">
-      <a-marker id="ar" type="pattern" url='../static/media/toky-marker.patt' emitevents='true' smooth='true'>
+      <a-marker id="ar" type="pattern" url='/v5/static/media/toky-marker.patt' emitevents='true' smooth='true'>
 
       </a-marker>
     </a-entity>
@@ -54,6 +54,14 @@ const wrapBack = `
 `;
 
 var ARCode = null;
+var arQrName = "TokyAr";
+var arSeverFileName = "";
+var arUrl = "";
+
+window.isArUploading = false;
+
+
+
 
 function dataURItoBlob(dataURI) {
   // convert base64/URLEncoded data component to raw binary data held in a string
@@ -75,31 +83,58 @@ function dataURItoBlob(dataURI) {
   return new Blob([ia], {type:mimeString});
 }
 
+function uploadARFile (blob, filename) {
+  var formData = new FormData()
+  formData.append('file', blob, filename)
+  return new Promise((resolve => {
+    $.ajax({
+      url: "/arupload",
+      type: "POST",
+      data: formData,
+      processData: false,  // 不处理数据
+      contentType: false, // 不设置内容类型
+      success: (res) => {
+        resolve(res)
+      }
+    });
+  }))
+}
+
+var arRunEl =arButton.children[0];
+let arRunElPreColor = arRunEl.style.color;
+
 async function uploadAR(){
-  // Get code from the workspace
-  // TODO: This takes all the code, so if there are non-AR parts there will
-  // be issues
-  let runScript = Blockly.JavaScript.workspaceToCode(workspace);
+  if (window.isUploading) {
+    return;
+  }
 
-  // This wraps the file in the standard code
-  runScript = wrapFront + runScript + wrapBack;
-  
-  // Converts the script into an html file
-  let file = new Blob([runScript], { type: 'text/html' });
+  arRunEl.style.color = "grey";
+  window.isArUploading = true;
 
-  const folderId = await saveDrivePicker('Please pick a place to save your AR experience');
-  let fileName = await getFileName();
-  await createFile(`${fileName}_experience`, file, folderId, 'html');
+  try{
+    // Get code from the workspace
+    let runScript = Blockly.JavaScript.workspaceToCode(workspace);
 
+    // This wraps the file in the standard code
+    runScript = wrapFront + runScript + wrapBack;
 
-  if (arFileID) {
-    let qrcode = `${window.location.href}Ar/?id=${arFileID}`;
-    let url = await QRCode.toDataURL(qrcode)
-    ARCode = await combineImages(url, "static/media/toky-marker.jpg");
-    imgFile = dataURItoBlob(ARCode);
-    await createFile(`${fileName}_qrcode`, imgFile, folderId, 'png');
+    // Converts the script into an html file
+    let fileContent = new Blob([runScript], { type: 'text/html' });
+    if (arSeverFileName.length < 3){
+      arSeverFileName = uuid() + ".html";
+    }
+    let res = await uploadARFile(fileContent, arSeverFileName);
+    arUrl = `https://${window.location.host}${res.data.url}`;
+    let qrCode = await QRCode.toDataURL(arUrl);
+    ARCode = await combineImages(qrCode, "static/media/toky-marker.jpg");
+
     viewQR();
-  } 
+
+  } catch (e) {
+    console.log(e);
+    window.isArUploading = false;
+    arRunEl.style.color = arRunElPreColor;
+  }
 }
 
 function combineImages(image1src, image2src) {
@@ -123,20 +158,88 @@ function combineImages(image1src, image2src) {
   });
 }
 
+
+//https://www.jqueryscript.net/lightbox/Highly-Configurable-JS-Modal-Dialog-Box-Library-Vex.html
+/* {<div class="vex-content">
+  <form class="vex-dialog-form">
+    <div class="vex-dialog-message"></div>
+    <div class="vex-dialog-input"></div>
+    <div class="vex-dialog-buttons">
+      <button type="submit" class="vex-dialog-button-primary vex-dialog-button vex-first">Save</button>
+      <button type="button" class="vex-dialog-button-secondary vex-dialog-button vex-last">Cacel</button>
+    </div>
+  </form>
+  <div class="vex-close"></div>
+</div> }*/
+
 function viewQR() {
-  if (!ARCode) {
-    vex.dialog.alert("Please generate AR experience first");
-    return;
-  }
   vex.dialog.open({
     afterOpen: () => {
       let img = document.createElement('IMG');
       img.src = ARCode;
-      let div = document.querySelector('.vex-content');
-      while (div.firstChild) {
-        div.removeChild(div.firstChild);
-      }
-      div.appendChild(img);
-    }
+      let saveinfo = document.createElement('TEXT');
+      saveinfo.innerHTML='<br><p style="color:black;text-align:center;font-size:small;">The AR will be kept 7 days after SAVE</p>';
+      let urlInfo = document.createElement('TEXT');
+      urlInfo.innerHTML=`<p>Scan or Click <a href="${arUrl}" target="_blank">link</a></p> `;
+      document.querySelector('.vex-dialog-message').appendChild(urlInfo);
+      urlInfo.append(img);
+      // document.querySelector('.vex-dialog-message').appendChild(img);
+      document.querySelector('.vex-content').appendChild(saveinfo); 
+    },
+    afterClose: () => {
+      window.isArUploading = false;
+      arRunEl.style.color = arRunElPreColor;
+    },
+
+    focusFirstInput: false,
+    showCloseButton: false,    
+    buttons: [
+      $.extend({}, vex.dialog.buttons.YES, {
+        text: "SAVE",
+        click: saveQR
+      }),
+      $.extend({}, vex.dialog.buttons.NO, {
+        text: "CLOSE",
+      })
+    ]
+
   })
+}
+
+
+function saveQR(){
+  vex.dialog.prompt({
+    message: "What would you like to name your file?",
+    placeholder: `${arQrName}`,
+    callback: function(fileName) {
+      if (fileName) {
+        arQrName = fileName;
+        let imgBlob = dataURItoBlob(ARCode)
+        if (bleVue.$data.isiOS) {
+            uploadFile(imgBlob, fileName + ".png", function (res) {
+              downloadData( res.data.url )
+            })
+        } else {
+          saveAs(imgBlob, fileName + ".png");
+        }
+
+        arSeverFileName = "";
+      }
+    }
+  });
+}
+
+
+function uuid() {
+  var s = [];
+  var hexDigits = "0123456789abcdef";
+  for (var i = 0; i < 36; i++) {
+      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+  }
+  s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+  s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+  s[8] = s[13] = s[18] = s[23] = "-";
+
+  var uuid = s.join("");
+  return uuid;
 }

@@ -178,11 +178,9 @@
                 </div>
 
                 <div class="item" onclick="uploadAR()" id="arButton" title="Generate AR" style="display: none;">
-                    <i class="fa fa-play" aria-hidden="true" align="center" style="color: purple;"> </i>
+                    <i class="fa fa-play" aria-hidden="true" align="center" style="color: purple;margin-left:6px"> </i>
                 </div>
-                <div class="item" onclick="viewQR()" id="arCodeButton" title="View Code" style="display: none;">
-                    <i class="fa fa-qrcode" aria-hidden="true" align="center" style="color: black; margin-left: 5px;"> </i>
-                </div>
+
 
             </div>
 
@@ -1160,15 +1158,15 @@
 
     <!-- end tabs -->
     <script type="text/javascript">
+        document.write('<script src="static/js/qrcode.min.js"><\/script>\r\n');
+        document.write('<script src="static/js/ar.js"><\/script>\r\n');
         if ( isEnglish ) {
-            document.write('<script src="static/js/qrcode.min.js"><\/script>\r\n');
             document.write('<script src="static/js/google.js"><\/script>\r\n');
-            document.write('<script src="static/js/ar.js"><\/script>\r\n');
         }
     </script>
 
 
-    <script src="static/js/main.js"></script>
+    <script src="static/js/main.js?v=1"></script>
 
     <!-- Google API, to be used with the Save to Drive button -->
     <script type="text/javascript">
