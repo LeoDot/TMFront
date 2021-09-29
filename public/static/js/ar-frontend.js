@@ -432,31 +432,45 @@ const ModelScale = 0.01
 function setup3DModel(id) {
   if (!document.querySelector(`#${id}`)){
     const arDoc = document.querySelector('#ar');
-    const arAssets = document.querySelector('a-assets');
+    //const arAssets = document.querySelector('a-assets');
     
-    arDoc.insertAdjacentHTML('beforeend', `<a-entity id="${id}" gltf-model="" position="0 0 0" rotation="0 0 0" scale="${ModelScale} ${ModelScale} ${ModelScale}"   material="transparent: true; opacity: 0.9; color="${accentColor}" ></a-entity>`);
-    arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-gltf" src="">`);
+    arDoc.insertAdjacentHTML('beforeend', `<a-entity id="${id}" gltf-model="" position="0 0 0" rotation="0 0 0" scale="${ModelScale} ${ModelScale} ${ModelScale}"   material="transparent: true; opacity: 0.9;" color="${accentColor}" ></a-entity>`);
+    //arAssets.insertAdjacentHTML('beforeend', `<a-asset-item id="${id}-gltf" src="">`);
   }
 }
 
 function load3DModel(id, objData) {
   if (!objData) {
-    setupText('Missing 3D files');
+    setupText('error');
+    updateText('error', 'Missing 3D file');
+    arColorSet('error','#ff0000');
+    arPositionSet('error', 0,3,1);
+
+    console.log("Missing 3D file");
     return;
   }
 
-  var element = document.getElementById(`${id}-gltf`);
-  if (element) {
-    element.setAttribute('src', objData);
-  }  
-  else{
-    console.log("no assert!")
-    return;
-  }
+  //todo(check why cannot use assert)
+  //The loader uses the file extension to determine if the file is JSON (gltf) or binary (glb). The number confuses the parser and goes through the JSON path, that's why you get the components:gltf-model:warn Unexpected token g in JSON at position 0 message
+  //A glTF file uses one of two possible file extensions, .gltf (JSON/ASCII) or .glb (binary). A .gltf file may be self-contained or may reference external binary and texture resources, while a .glb file is entirely self-contained. 
+
+  // var element = document.getElementById(`${id}-gltf`);
+  // if (element) {
+  //   //setAttribute('src', 'url(' + base64Data + ')')
+  //   element.setAttribute('src', 'url(' + objData + ')');
+  // }  
+  // else{
+  //   console.log("no assert!")
+  //   return;
+  // }
 
   element = document.getElementById(`${id}`);
+
   if (element) {
-    element.setAttribute('gltf-model', `#${id}-gltf`);
+    element.setAttribute('gltf-model', objData);
+  }
+  else{
+    console.log("no assert!")
   }
 
 }

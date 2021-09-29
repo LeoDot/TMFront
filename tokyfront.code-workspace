@@ -1,16 +1,7 @@
 {
 	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../create_tokylabs"
-		},
-		{
-			"path": "../blockly"
-		},
-		{
-			"path": "../../aframe-boilerplate-master"
-		}
-	]
+    {
+      "path": "."
+    }
+  ]
 }

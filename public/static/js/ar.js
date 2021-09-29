@@ -6,7 +6,7 @@ const wrapFront = `
 <head>
   <title>Tokylabs AR</title>
   <link rel="icon" type="image/png" href="/v5/static/media/favicon.png"/>
-  <script src="/v5/static/js/aframe.min.js"></script>
+  <script data-cfasync="false" src="/v5/static/js/aframe.min.js"></script>
   <script src="/v5/static/js/aframe-ar.js"></script>
   <script src="/v5/static/js/ar-frontend.js"></script>
   <script src="/v5/static/js/d3.v5.min.js"></script>
@@ -114,6 +114,11 @@ async function uploadAR(){
   try{
     // Get code from the workspace
     let runScript = Blockly.JavaScript.workspaceToCode(workspace);
+
+    if (runScript.length < 50 ){
+      vex.dialog.alert("Code at first, please.");
+      return;
+    }
 
     // This wraps the file in the standard code
     runScript = wrapFront + runScript + wrapBack;

@@ -6,29 +6,9 @@
       var isEnglish = urlHost.indexOf(".com") > 0;
     </script>
     <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tokylabs</title>
     <link rel="icon" type="image/png" href="static/media/favicon.png"/>
-
-    <!-- Google Tag Manager -->
-    <script>
-    /*
-    (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
-        });
-        var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MWXV334');
-    */
-    </script>
-    <!-- End Google Tag Manager -->
 
     <script type="text/javascript">
       if ( isEnglish){
@@ -58,16 +38,8 @@
     <link href="static/css/widget.css" rel="stylesheet">
     <link href="static/css/tabs.css" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" -->
-          <!-- integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-
-          <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" -->
-            <!-- integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-        <script src="static/js/bootstrap.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" -->
-            <!-- integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-    <!-- <link   href="icons/icon.css"   rel="stylesheet"> -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/popper.min.js"></script>
     <style>
         body {
@@ -443,6 +415,10 @@
             </value>
         </block>
 
+        <block type="screen_paint_image">
+          <field name="type">0</field>
+        </block>
+	  
         <block type="clear_screen"></block>
         <block type="update_screen"></block>
 
@@ -552,6 +528,30 @@
     <category name="Functions" colour="80" custom="PROCEDURE" icon="fa-puzzle-piece"></category>
 
 
+
+    <category name="Ottoky" colour="340" icon="fa-user-o">
+      <block type="ottoky_init"></block>
+
+      <block type="ottoky_move">
+        <field name="action">0</field>
+        <value name="speed">
+          <block type="math_number">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+      </block>
+      <block type="ottoky_keepaction">
+        <field name="action">0</field>
+      </block>
+      <block type="ottoky_dance">
+        <field name="type">0</field>
+        <value name="speed">
+          <block type="math_number">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+      </block>
+    </category>
     <category name="IOT" colour="180" icon="fa-cloud">
         <block type="wifi_set"></block>
         <block type="iotplatform_login"></block>
