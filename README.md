@@ -1,5 +1,7 @@
 # create-tokylabs-v
 
+The front end of create-tokylabs.
+
 ## Project setup
 ```
 npm install
