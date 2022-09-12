@@ -5,9 +5,10 @@
         <img src="static/media/toky.png" />
       </a>
       <SwitchBtn />
+      <button onclick="TogetherJS(this); return false;" style="border-radius: 15px;background: rgb(221, 221, 255);font-size: 15px;font-weight: 600;color: chocolate;">Collaborate</button>
       <div :class="css.menu">
         <a href="http://community.tokylabs.com/" target="_blank">Community</a>
-        <a href="http://tokylabs.com/learn" target="_blank">Learn</a>
+        <a href="http://tokylabs.com/learn" target="_blank">Academy</a>
         <a
           href="http://tokylabs.com/presentations/First_Steps_EN/index.html"
           target="_blank"
@@ -46,10 +47,10 @@ export default {
   methods: {
     handleClickMenum() {
       if (this.showMenu) {
-        this.showMenu = false
+        this.showMenu = false;
         this.$refs.mobileMenu.hide();
       } else {
-        this.showMenu = true
+        this.showMenu = true;
         this.$refs.mobileMenu.show();
       }
     },

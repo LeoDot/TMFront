@@ -99,7 +99,7 @@ export default {
     cursor: pointer;
     transition: all 0.2s ease-out;
     color: #fff;
-    background: #ED2D58;
+    background: #ed2d58;
 
     &:hover {
       background: rgb(247, 76, 113);
