@@ -93,7 +93,7 @@ export default {
             }
 
             a {
-              color:antiquewhite;
+              color: antiquewhite;
             }
           }
         }

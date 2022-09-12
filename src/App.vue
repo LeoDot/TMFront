@@ -5,7 +5,12 @@
         <img src="static/media/toky.png" />
       </a>
       <SwitchBtn />
-      <button onclick="TogetherJS(this); return false;" style="border-radius: 15px;background: rgb(221, 221, 255);font-size: 15px;font-weight: 600;color: chocolate;">Collaborate</button>
+      <button
+        onclick="TogetherJS(this); return false;"
+        style="border-radius: 15px;background: rgb(221, 221, 255);font-size: 15px;font-weight: 600;color: chocolate;"
+      >
+        Collaborate
+      </button>
       <div :class="css.menu">
         <a href="http://community.tokylabs.com/" target="_blank">Community</a>
         <a href="http://tokylabs.com/learn" target="_blank">Academy</a>

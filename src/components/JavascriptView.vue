@@ -134,7 +134,7 @@ export default {
 
     .output {
       background: #212529;
-      color:antiquewhite;
+      color: antiquewhite;
       width: 100%;
       height: 100%;
       resize: none;
