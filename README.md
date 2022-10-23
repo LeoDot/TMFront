@@ -35,3 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 4. 重新安装淘宝镜像： npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 5. 再次执行：cnpm i
+
+## nvm (node should be 14.20.0)
+nvm use node
+nvm use system
