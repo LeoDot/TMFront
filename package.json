@@ -27,7 +27,7 @@
     "eslint-plugin-vue": "^6.1.2",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "svgtofont": "^1.6.0",
+    "svgtofont": "^3.22.0",
     "vue-template-compiler": "^2.6.11"
   }
 }
