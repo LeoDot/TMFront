@@ -16,7 +16,7 @@
 
       <div :class="css.menu">
         <a href="http://community.tokylabs.com/" target="_blank">Community</a>
-        <a href="http://tokylabs.com/learn" target="_blank">Academy</a>
+        <a href="https://academy.tokylabs.com/" target="_blank">Academy</a>
         <a
           href="http://tokylabs.com/presentations/First_Steps_EN/index.html"
           target="_blank"
