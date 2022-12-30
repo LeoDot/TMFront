@@ -9,7 +9,7 @@
             >
           </li>
           <li>
-            <a href="http://tokylabs.com/learn" target="_blank">Learn</a>
+            <a href="https://academy.tokylabs.com/" target="_blank">Academy</a>
           </li>
           <li>
             <a
